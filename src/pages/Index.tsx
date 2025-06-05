@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Cloud, Server, Database, Shield, Zap, Globe, Users, TrendingUp, BookOpen, Award, Target, Bell, Book } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Cloud, Server, Database, Shield, Zap, Globe, Users, TrendingUp, BookOpen, Award, Target, Bell, Book, Smartphone, Laptop, Wifi, Lock, DollarSign, BarChart3, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
