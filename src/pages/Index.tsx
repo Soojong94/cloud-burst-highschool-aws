@@ -91,6 +91,8 @@ const Index = () => {
         setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
     };
 
+    const CurrentIcon = slides[currentSlide].icon;
+
     return (
         <div className="min-h-screen bg-gray-100 py-6 flex items-center justify-center">
             <div className="max-w-4xl mx-auto p-4">
@@ -111,7 +113,7 @@ const Index = () => {
                     <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
                             <div className={`p-3 rounded-full ${slides[currentSlide].color} text-white`}>
-                                <slides[currentSlide].icon className="h-8 w-8" />
+                                <CurrentIcon className="h-8 w-8" />
                             </div>
                             <div>
                                 <p className="text-gray-700">
