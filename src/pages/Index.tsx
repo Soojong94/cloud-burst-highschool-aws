@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { 
   Cloud, 
   Globe, 
@@ -23,7 +24,8 @@ import {
   Lightbulb,
   Building,
   Gamepad2,
-  DollarSign
+  DollarSign,
+  Info
 } from 'lucide-react';
 
 const Index = () => {
@@ -36,115 +38,134 @@ const Index = () => {
       id: 'intro',
       title: '일상 속 클라우드',
       icon: Smartphone,
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      hasModal: false
     },
     {
       id: 'generation-comparison',
       title: '세대별 기술 변화',
       icon: Camera,
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
+      hasModal: false
     },
     {
       id: 'cloud-definition',
       title: '클라우드란 무엇인가',
       icon: Cloud,
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-indigo-500 to-blue-500',
+      hasModal: true
     },
     {
       id: 'cloud-benefits',
       title: '클라우드의 장점',
       icon: Zap,
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-green-500 to-emerald-500',
+      hasModal: false
     },
     {
       id: 'amazon-story',
       title: '아마존의 변신',
       icon: Building,
-      color: 'from-orange-500 to-yellow-500'
+      color: 'from-orange-500 to-yellow-500',
+      hasModal: true
     },
     {
       id: 'aws-birth',
       title: 'AWS의 탄생',
       icon: Lightbulb,
-      color: 'from-red-500 to-pink-500'
+      color: 'from-red-500 to-pink-500',
+      hasModal: true
     },
     {
       id: 'aws-numbers',
       title: 'AWS의 위상',
       icon: TrendingUp,
-      color: 'from-violet-500 to-purple-500'
+      color: 'from-violet-500 to-purple-500',
+      hasModal: true
     },
     {
       id: 'daily-aws',
       title: '일상 속 AWS',
       icon: Gamepad2,
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-cyan-500 to-blue-500',
+      hasModal: true
     },
     {
       id: 'ec2-intro',
       title: 'EC2 - 클라우드 컴퓨터',
       icon: Cpu,
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-amber-500 to-orange-500',
+      hasModal: true
     },
     {
       id: 'ec2-demo',
       title: 'EC2 실제 사례',
       icon: Code,
-      color: 'from-emerald-500 to-green-500'
+      color: 'from-emerald-500 to-green-500',
+      hasModal: true
     },
     {
       id: 's3-intro',
       title: 'S3 - 무제한 저장소',
       icon: HardDrive,
-      color: 'from-blue-500 to-indigo-500'
+      color: 'from-blue-500 to-indigo-500',
+      hasModal: true
     },
     {
       id: 's3-cases',
       title: 'S3 활용 사례',
       icon: HardDrive,
-      color: 'from-pink-500 to-rose-500'
+      color: 'from-pink-500 to-rose-500',
+      hasModal: true
     },
     {
       id: 'rds-intro',
       title: 'RDS - 관리형 데이터베이스',
       icon: Database,
-      color: 'from-teal-500 to-cyan-500'
+      color: 'from-teal-500 to-cyan-500',
+      hasModal: true
     },
     {
       id: 'ai-services',
       title: 'AWS AI 서비스',
       icon: Brain,
-      color: 'from-purple-500 to-violet-500'
+      color: 'from-purple-500 to-violet-500',
+      hasModal: true
     },
     {
       id: 'new-careers',
       title: '새로운 직업들',
       icon: Trophy,
-      color: 'from-yellow-500 to-amber-500'
+      color: 'from-yellow-500 to-amber-500',
+      hasModal: true
     },
     {
       id: 'career-paths',
       title: '구체적인 진로',
       icon: Target,
-      color: 'from-green-500 to-teal-500'
+      color: 'from-green-500 to-teal-500',
+      hasModal: true
     },
     {
       id: 'student-action',
       title: '고등학생 실천 방안',
       icon: BookOpen,
-      color: 'from-indigo-500 to-purple-500'
+      color: 'from-indigo-500 to-purple-500',
+      hasModal: true
     },
     {
       id: 'security-basics',
       title: '보안 기본 원칙',
       icon: Shield,
-      color: 'from-red-500 to-orange-500'
+      color: 'from-red-500 to-orange-500',
+      hasModal: true
     },
     {
       id: 'learning-roadmap',
       title: '학습 로드맵',
       icon: Users,
-      color: 'from-blue-500 to-purple-500'
+      color: 'from-blue-500 to-purple-500',
+      hasModal: true
     }
   ];
 
@@ -196,9 +217,386 @@ const Index = () => {
     }, 300);
   };
 
+  const getModalContent = (sectionId: string) => {
+    switch (sectionId) {
+      case 'cloud-definition':
+        return {
+          title: '클라우드 컴퓨팅 심화 이해',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">클라우드 컴퓨팅의 5가지 핵심 특징</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                    <div>
+                      <h5 className="font-semibold">온디맨드 셀프서비스</h5>
+                      <p className="text-sm text-gray-600">사용자가 필요할 때 언제든지 컴퓨팅 자원을 자동으로 프로비저닝할 수 있습니다.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                    <div>
+                      <h5 className="font-semibold">광범위한 네트워크 접근</h5>
+                      <p className="text-sm text-gray-600">네트워크를 통해 어디서든 접근 가능하며, 다양한 디바이스에서 사용할 수 있습니다.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                    <div>
+                      <h5 className="font-semibold">자원 풀링</h5>
+                      <p className="text-sm text-gray-600">여러 사용자가 물리적 자원을 공유하여 효율성을 극대화합니다.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                    <div>
+                      <h5 className="font-semibold">빠른 탄력성</h5>
+                      <p className="text-sm text-gray-600">필요에 따라 자원을 빠르게 확장하거나 축소할 수 있습니다.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">5</div>
+                    <div>
+                      <h5 className="font-semibold">측정 가능한 서비스</h5>
+                      <p className="text-sm text-gray-600">사용량을 모니터링하고 제어할 수 있으며, 사용한 만큼만 비용을 지불합니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        };
+      
+      case 'amazon-story':
+        return {
+          title: '아마존의 놀라운 변신 이야기',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">제프 베조스의 비전</h4>
+                <p className="text-gray-600 mb-4">
+                  1994년, 제프 베조스는 월스트리트의 안정적인 직장을 떠나 시애틀의 차고에서 온라인 서점을 시작했습니다. 
+                  당시 인터넷은 매년 2300% 성장하고 있었고, 베조스는 이 기회를 놓치고 싶지 않았습니다.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold mb-3">성장의 고민</h4>
+                <div className="bg-yellow-50 p-4 rounded-lg">
+                  <p className="text-sm mb-2"><strong>문제상황:</strong></p>
+                  <ul className="text-sm space-y-1 text-gray-600">
+                    <li>• 크리스마스 시즌마다 서버가 다운</li>
+                    <li>• 전 세계 확장하면서 각국마다 서버 구축 필요</li>
+                    <li>• 개발자들이 코딩보다 서버 관리에 더 많은 시간 소모</li>
+                    <li>• 예측하기 어려운 트래픽으로 인한 비효율</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">혁신적인 해결책</h4>
+                <p className="text-gray-600">
+                  아마존 내부에서 사용하던 인프라 관리 시스템이 너무 잘 작동해서, 
+                  "이걸 다른 회사들도 사용할 수 있게 하면 어떨까?"라는 아이디어가 나왔습니다. 
+                  이것이 바로 AWS의 시작이었습니다.
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      case 'aws-birth':
+        return {
+          title: 'AWS 탄생의 배경과 의미',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">2006년 3월 14일 - S3 런칭</h4>
+                <p className="text-gray-600 mb-4">
+                  AWS의 첫 번째 서비스인 S3(Simple Storage Service)가 출시되었습니다. 
+                  처음에는 많은 사람들이 "아마존이 왜 서점에서 IT 서비스를?"라고 의아해했습니다.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">초기 서비스들</h4>
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <h5 className="font-semibold">S3 (Simple Storage Service)</h5>
+                    <p className="text-sm text-gray-600">파일을 인터넷에 저장하고 어디서든 접근할 수 있는 서비스</p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h5 className="font-semibold">EC2 (Elastic Compute Cloud)</h5>
+                    <p className="text-sm text-gray-600">가상 컴퓨터를 클라우드에서 임대할 수 있는 서비스</p>
+                  </div>
+                  <div className="border-l-4 border-purple-500 pl-4">
+                    <h5 className="font-semibold">SQS (Simple Queue Service)</h5>
+                    <p className="text-sm text-gray-600">애플리케이션 간 메시지를 주고받을 수 있는 서비스</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">게임 체인저</h4>
+                <p className="text-gray-600">
+                  AWS의 등장으로 스타트업들도 몇 분 만에 전 세계 서비스를 시작할 수 있게 되었습니다. 
+                  이전에는 수억 원의 초기 투자가 필요했던 일이 월 몇만 원으로 가능해진 것입니다.
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      case 'ec2-intro':
+        return {
+          title: 'EC2 완벽 이해하기',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">EC2란 무엇인가?</h4>
+                <p className="text-gray-600 mb-4">
+                  EC2는 "Elastic Compute Cloud"의 줄임말로, 클라우드에서 제공하는 가상 컴퓨터입니다. 
+                  집에 있는 컴퓨터와 똑같지만, 인터넷을 통해 접근하고 사용하는 점이 다릅니다.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">EC2 인스턴스 타입</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <h5 className="font-semibold text-blue-800">t2.micro</h5>
+                    <p className="text-sm text-blue-600">무료 티어, 웹사이트나 소규모 앱에 적합</p>
+                  </div>
+                  <div className="bg-green-50 p-3 rounded-lg">
+                    <h5 className="font-semibold text-green-800">c5.large</h5>
+                    <p className="text-sm text-green-600">CPU 집약적인 작업에 최적화</p>
+                  </div>
+                  <div className="bg-purple-50 p-3 rounded-lg">
+                    <h5 className="font-semibold text-purple-800">r5.xlarge</h5>
+                    <p className="text-sm text-purple-600">메모리 집약적인 작업에 최적화</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">실제 사용 예시</h4>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm mb-2"><strong>시나리오:</strong> 고등학생이 개인 포트폴리오 웹사이트 만들기</p>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p>1. AWS 프리티어로 t2.micro 인스턴스 생성 (무료)</p>
+                    <p>2. 리눅스 서버에 웹서버(Apache/Nginx) 설치</p>
+                    <p>3. HTML, CSS, JavaScript로 만든 웹사이트 업로드</p>
+                    <p>4. 도메인 연결하여 전 세계에서 접근 가능</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        };
+
+      case 's3-intro':
+        return {
+          title: 'S3 스토리지 서비스 완전 정복',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">S3의 특별한 점</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-blue-600">99.999999999%</div>
+                    <p className="text-sm text-gray-600">데이터 내구성 (11 9's)</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-green-600">무제한</div>
+                    <p className="text-sm text-gray-600">저장 용량</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">S3 스토리지 클래스</h4>
+                <div className="space-y-3">
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <h5 className="font-semibold">Standard</h5>
+                    <p className="text-sm text-gray-600">자주 접근하는 데이터용, 가장 빠른 접근 속도</p>
+                  </div>
+                  <div className="border-l-4 border-yellow-500 pl-4">
+                    <h5 className="font-semibold">Standard-IA</h5>
+                    <p className="text-sm text-gray-600">가끔 접근하는 데이터용, 저장 비용 절약</p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h5 className="font-semibold">Glacier</h5>
+                    <p className="text-sm text-gray-600">아카이브용, 매우 저렴하지만 복구에 시간 소요</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">고등학생 활용 아이디어</h4>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+                  <ul className="space-y-2 text-sm">
+                    <li>📸 포트폴리오 이미지 저장소</li>
+                    <li>📱 모바일 앱의 사진/동영상 저장</li>
+                    <li>🎵 음악이나 팟캐스트 호스팅</li>
+                    <li>📚 학습 자료 백업 및 공유</li>
+                    <li>🌐 정적 웹사이트 호스팅</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )
+        };
+
+      case 'new-careers':
+        return {
+          title: '클라우드 시대의 새로운 직업들',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">고연봉 클라우드 직업 TOP 5</h4>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                    <div>
+                      <h5 className="font-semibold">클라우드 아키텍트</h5>
+                      <p className="text-sm text-gray-600">클라우드 인프라 설계 및 구축</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-blue-600">7천만원~1억원</div>
+                      <div className="text-xs text-gray-500">연봉</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                    <div>
+                      <h5 className="font-semibold">DevOps 엔지니어</h5>
+                      <p className="text-sm text-gray-600">개발과 운영을 연결하는 역할</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-green-600">6천만원~9천만원</div>
+                      <div className="text-xs text-gray-500">연봉</div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                    <div>
+                      <h5 className="font-semibold">클라우드 보안 전문가</h5>
+                      <p className="text-sm text-gray-600">클라우드 환경의 보안 관리</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-purple-600">8천만원~1억2천만원</div>
+                      <div className="text-xs text-gray-500">연봉</div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                    <div>
+                      <h5 className="font-semibold">데이터 엔지니어</h5>
+                      <p className="text-sm text-gray-600">클라우드 기반 데이터 파이프라인 구축</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-orange-600">7천만원~1억원</div>
+                      <div className="text-xs text-gray-500">연봉</div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                    <div>
+                      <h5 className="font-semibold">클라우드 컨설턴트</h5>
+                      <p className="text-sm text-gray-600">기업의 클라우드 전환 컨설팅</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-red-600">8천만원~1억5천만원</div>
+                      <div className="text-xs text-gray-500">연봉</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 p-4 rounded-lg">
+                <h4 className="font-bold text-yellow-800 mb-2">💡 왜 이렇게 연봉이 높을까?</h4>
+                <ul className="text-sm text-yellow-700 space-y-1">
+                  <li>• 급속한 디지털 전환으로 수요 급증</li>
+                  <li>• 전문 인력 부족 (공급 부족)</li>
+                  <li>• 기업의 핵심 인프라를 담당</li>
+                  <li>• 글로벌 시장에서 경쟁력 확보</li>
+                </ul>
+              </div>
+            </div>
+          )
+        };
+
+      case 'student-action':
+        return {
+          title: '고등학생을 위한 실전 가이드',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">단계별 실천 계획</h4>
+                <div className="space-y-4">
+                  <div className="border border-blue-200 p-4 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                      <h5 className="font-semibold">AWS 프리티어 가입 (지금 당장!)</h5>
+                    </div>
+                    <ul className="text-sm text-gray-600 space-y-1 ml-11">
+                      <li>• 신용카드 필요 (해외결제 가능한 체크카드도 OK)</li>
+                      <li>• 12개월 무료 사용 가능</li>
+                      <li>• EC2 750시간, S3 5GB 등 무료 제공</li>
+                      <li>• 실습하면서 배우는 것이 가장 효과적</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-green-200 p-4 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                      <h5 className="font-semibold">첫 번째 프로젝트 진행</h5>
+                    </div>
+                    <ul className="text-sm text-gray-600 space-y-1 ml-11">
+                      <li>• 개인 포트폴리오 웹사이트 만들기</li>
+                      <li>• S3로 정적 웹사이트 호스팅</li>
+                      <li>• 또는 EC2로 동적 웹사이트 구축</li>
+                      <li>• 과정을 블로그에 기록하여 포트폴리오 제작</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-purple-200 p-4 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                      <h5 className="font-semibold">AWS 자격증 도전</h5>
+                    </div>
+                    <ul className="text-sm text-gray-600 space-y-1 ml-11">
+                      <li>• AWS Cloud Practitioner (입문자용)</li>
+                      <li>• 온라인 무료 교육 자료 활용</li>
+                      <li>• 시험비 150달러 (대학 진학 시 유리)</li>
+                      <li>• 고등학생도 충분히 취득 가능</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-bold text-blue-800 mb-2">📚 추천 학습 리소스</h4>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• AWS 공식 무료 온라인 교육 (AWS Skill Builder)</li>
+                  <li>• 생활코딩 AWS 강의 (무료)</li>
+                  <li>• 인프런, 유데미 AWS 강의</li>
+                  <li>• AWS 공식 문서 (한국어 지원)</li>
+                </ul>
+              </div>
+            </div>
+          )
+        };
+
+      default:
+        return null;
+    }
+  };
+
   const renderSection = () => {
     const section = sections[currentSection];
     const IconComponent = section.icon;
+    const modalContent = getModalContent(section.id);
 
     return (
       <div className={`space-y-8 transition-all duration-500 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
@@ -212,6 +610,24 @@ const Index = () => {
               <IconComponent className="w-20 h-20" />
             </div>
             <h2 className="text-4xl font-bold">{section.title}</h2>
+            {section.hasModal && modalContent && (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="bg-white/20 border-white/30 text-white hover:bg-white/30 transition-all duration-300">
+                    <Info className="w-4 h-4 mr-2" />
+                    자세히 보기
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-xl font-bold">{modalContent.title}</DialogTitle>
+                  </DialogHeader>
+                  <div className="mt-4">
+                    {modalContent.content}
+                  </div>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
         </div>
 
