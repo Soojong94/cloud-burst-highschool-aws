@@ -112,10 +112,17 @@ const Index = () => {
       hasModal: true
     },
     {
-      id: 's3-cases',
-      title: 'S3 활용 사례',
-      icon: HardDrive,
-      color: 'from-pink-500 to-rose-500',
+      id: 'ecs-eks',
+      title: 'ECS/EKS - 컨테이너 서비스',
+      icon: Code,
+      color: 'from-teal-500 to-cyan-500',
+      hasModal: true
+    },
+    {
+      id: 'serverless',
+      title: 'Serverless - 서버 없는 컴퓨팅',
+      icon: Zap,
+      color: 'from-purple-500 to-violet-500',
       hasModal: true
     },
     {
@@ -148,7 +155,7 @@ const Index = () => {
     },
     {
       id: 'student-action',
-      title: '고등학생 실천 방안',
+      title: '실천 방안',
       icon: BookOpen,
       color: 'from-indigo-500 to-purple-500',
       hasModal: true
@@ -433,7 +440,7 @@ const Index = () => {
               </div>
 
               <div>
-                <h4 className="text-lg font-bold mb-3">고등학생 활용 아이디어</h4>
+                <h4 className="text-lg font-bold mb-3">실제 활용 사례</h4>
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
                   <ul className="space-y-2 text-sm">
                     <li>📸 포트폴리오 이미지 저장소</li>
@@ -448,78 +455,333 @@ const Index = () => {
           )
         };
 
+      case 'ecs-eks':
+        return {
+          title: 'ECS/EKS - 컨테이너 오케스트레이션',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">컨테이너란?</h4>
+                <p className="text-gray-600 mb-4">
+                  컨테이너는 애플리케이션을 실행하는데 필요한 모든 것을 패키지로 묶은 것입니다. 
+                  "어디서나 동일하게 실행되는 소프트웨어 박스"라고 생각하면 됩니다.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">ECS vs EKS</h4>
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="border border-blue-200 p-4 rounded-lg">
+                    <h5 className="font-semibold text-blue-800 mb-2">ECS (Elastic Container Service)</h5>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• AWS에서 만든 간단한 컨테이너 관리 서비스</li>
+                      <li>• 배우기 쉽고 AWS 서비스와 잘 연동됨</li>
+                      <li>• 중소규모 애플리케이션에 적합</li>
+                    </ul>
+                  </div>
+                  <div className="border border-green-200 p-4 rounded-lg">
+                    <h5 className="font-semibold text-green-800 mb-2">EKS (Elastic Kubernetes Service)</h5>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• 구글이 만든 Kubernetes를 AWS에서 관리해주는 서비스</li>
+                      <li>• 복잡하지만 매우 강력한 기능 제공</li>
+                      <li>• 대규모 엔터프라이즈 애플리케이션에 적합</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">실제 사용 예시</h4>
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg">
+                  <p className="text-sm mb-2"><strong>마이크로서비스 아키텍처:</strong></p>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• 사용자 관리 서비스</li>
+                    <li>• 상품 관리 서비스</li>
+                    <li>• 결제 서비스</li>
+                    <li>• 알림 서비스</li>
+                  </ul>
+                  <p className="text-sm text-gray-600 mt-2">
+                    각각을 독립적인 컨테이너로 만들어 개별적으로 배포하고 확장할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )
+        };
+
+      case 'serverless':
+        return {
+          title: 'Serverless - 서버 없는 혁명',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">Serverless란?</h4>
+                <p className="text-gray-600 mb-4">
+                  서버가 없다는 뜻이 아니라, 서버 관리를 개발자가 하지 않아도 된다는 의미입니다. 
+                  코드만 작성하면 AWS가 알아서 실행해주는 혁신적인 방식입니다.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">주요 Serverless 서비스</h4>
+                <div className="space-y-3">
+                  <div className="border-l-4 border-orange-500 pl-4">
+                    <h5 className="font-semibold">AWS Lambda</h5>
+                    <p className="text-sm text-gray-600">코드를 실행하는 함수 서비스, 사용한 시간만큼만 비용 지불</p>
+                  </div>
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <h5 className="font-semibold">API Gateway</h5>
+                    <p className="text-sm text-gray-600">API를 쉽게 만들고 관리할 수 있는 서비스</p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h5 className="font-semibold">DynamoDB</h5>
+                    <p className="text-sm text-gray-600">서버리스 NoSQL 데이터베이스</p>
+                  </div>
+                  <div className="border-l-4 border-purple-500 pl-4">
+                    <h5 className="font-semibold">Step Functions</h5>
+                    <p className="text-sm text-gray-600">여러 Lambda 함수를 연결하는 워크플로우 서비스</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">Serverless의 장점</h4>
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg">
+                  <ul className="space-y-2 text-sm">
+                    <li>💰 <strong>비용 효율성:</strong> 실행된 시간만큼만 비용 지불</li>
+                    <li>⚡ <strong>자동 확장:</strong> 트래픽에 따라 자동으로 확장/축소</li>
+                    <li>🛠️ <strong>관리 불필요:</strong> 서버 패치, 업데이트 등 AWS가 자동 처리</li>
+                    <li>🚀 <strong>빠른 개발:</strong> 인프라 걱정 없이 비즈니스 로직에 집중</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">실제 활용 예시</h4>
+                <div className="bg-yellow-50 p-4 rounded-lg">
+                  <p className="text-sm mb-2"><strong>이미지 리사이징 서비스:</strong></p>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p>1. S3에 이미지 업로드</p>
+                    <p>2. Lambda 함수가 자동으로 트리거됨</p>
+                    <p>3. 이미지를 여러 크기로 리사이징</p>
+                    <p>4. 처리된 이미지를 다시 S3에 저장</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2">
+                    이 모든 과정이 서버 관리 없이 자동으로 처리됩니다!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )
+        };
+
+      case 'ai-services':
+        return {
+          title: 'AWS AI/ML 서비스 완전 가이드',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">AI 서비스 카테고리</h4>
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-blue-800 mb-2">🖼️ 컴퓨터 비전</h5>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Amazon Rekognition:</strong> 이미지와 비디오에서 객체, 얼굴, 텍스트 인식</p>
+                      <p><strong>Amazon Textract:</strong> 문서에서 텍스트와 데이터 자동 추출</p>
+                      <p><strong>Amazon Lookout for Vision:</strong> 제조업체의 품질 검사 자동화</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-green-800 mb-2">🗣️ 음성 & 언어</h5>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Amazon Polly:</strong> 텍스트를 자연스러운 음성으로 변환</p>
+                      <p><strong>Amazon Transcribe:</strong> 음성을 정확한 텍스트로 변환</p>
+                      <p><strong>Amazon Translate:</strong> 75개 이상 언어 간 실시간 번역</p>
+                      <p><strong>Amazon Comprehend:</strong> 텍스트에서 감정, 주제, 키워드 분석</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-purple-800 mb-2">🤖 대화형 AI</h5>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Amazon Lex:</strong> 음성 및 텍스트 기반 챗봇 구축</p>
+                      <p><strong>Amazon Connect:</strong> AI 기반 고객 서비스 센터</p>
+                      <p><strong>Amazon Bedrock:</strong> 생성형 AI 모델을 쉽게 사용할 수 있는 서비스</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h5 className="font-semibold text-orange-800 mb-2">📊 예측 & 추천</h5>
+                    <div className="space-y-2 text-sm">
+                      <p><strong>Amazon Personalize:</strong> 개인화된 추천 시스템</p>
+                      <p><strong>Amazon Forecast:</strong> 시계열 데이터 기반 예측</p>
+                      <p><strong>Amazon Fraud Detector:</strong> 온라인 사기 탐지</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">실제 활용 사례</h4>
+                <div className="space-y-4">
+                  <div className="border border-gray-200 p-4 rounded-lg">
+                    <h5 className="font-semibold mb-2">📱 소셜 미디어 앱</h5>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Rekognition으로 부적절한 이미지 자동 필터링</li>
+                      <li>• Comprehend로 댓글의 감정 분석</li>
+                      <li>• Personalize로 개인화된 피드 추천</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-gray-200 p-4 rounded-lg">
+                    <h5 className="font-semibold mb-2">🛒 이커머스 플랫폼</h5>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Textract로 영수증/문서 자동 처리</li>
+                      <li>• Translate로 다국어 상품 설명 자동 번역</li>
+                      <li>• Fraud Detector로 가짜 리뷰 탐지</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-gray-200 p-4 rounded-lg">
+                    <h5 className="font-semibold mb-2">🎓 교육 플랫폼</h5>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Polly로 텍스트 교재를 오디오북으로 변환</li>
+                      <li>• Transcribe로 강의 영상 자동 자막 생성</li>
+                      <li>• Lex로 AI 튜터 챗봇 구축</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">AI 서비스 시작하기</h4>
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                      <div>
+                        <p className="font-semibold">간단한 데모부터 시작</p>
+                        <p className="text-sm text-gray-600">AWS 콘솔에서 제공하는 데모를 통해 각 서비스 체험</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                      <div>
+                        <p className="font-semibold">API 연동 실습</p>
+                        <p className="text-sm text-gray-600">간단한 웹앱에 AI 기능 통합해보기</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                      <div>
+                        <p className="font-semibold">프로젝트 적용</p>
+                        <p className="text-sm text-gray-600">개인 프로젝트에 적합한 AI 서비스 선택하여 적용</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        };
+
       case 'new-careers':
         return {
           title: '클라우드 시대의 새로운 직업들',
           content: (
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-bold mb-3">고연봉 클라우드 직업 TOP 5</h4>
+                <h4 className="text-lg font-bold mb-3">클라우드 전문 직업 분야</h4>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                  <div className="flex items-start gap-4 p-3 bg-blue-50 rounded-lg">
+                    <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center">
+                      <Building className="w-6 h-6" />
+                    </div>
                     <div>
                       <h5 className="font-semibold">클라우드 아키텍트</h5>
-                      <p className="text-sm text-gray-600">클라우드 인프라 설계 및 구축</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-blue-600">7천만원~1억원</div>
-                      <div className="text-xs text-gray-500">연봉</div>
+                      <p className="text-sm text-gray-600">
+                        클라우드 인프라 설계 및 구축을 담당하는 전문가입니다. 
+                        기업의 IT 전략을 클라우드로 전환하는 핵심 역할을 수행합니다.
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                  <div className="flex items-start gap-4 p-3 bg-green-50 rounded-lg">
+                    <div className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center">
+                      <Code className="w-6 h-6" />
+                    </div>
                     <div>
                       <h5 className="font-semibold">DevOps 엔지니어</h5>
-                      <p className="text-sm text-gray-600">개발과 운영을 연결하는 역할</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-green-600">6천만원~9천만원</div>
-                      <div className="text-xs text-gray-500">연봉</div>
+                      <p className="text-sm text-gray-600">
+                        개발과 운영을 연결하는 역할로, CI/CD 파이프라인 구축과 
+                        자동화를 통해 개발 효율성을 극대화합니다.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                  <div className="flex items-start gap-4 p-3 bg-purple-50 rounded-lg">
+                    <div className="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center">
+                      <Shield className="w-6 h-6" />
+                    </div>
                     <div>
                       <h5 className="font-semibold">클라우드 보안 전문가</h5>
-                      <p className="text-sm text-gray-600">클라우드 환경의 보안 관리</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-purple-600">8천만원~1억2천만원</div>
-                      <div className="text-xs text-gray-500">연봉</div>
+                      <p className="text-sm text-gray-600">
+                        클라우드 환경의 보안 설계, 구현, 모니터링을 담당하며 
+                        기업의 데이터와 시스템을 보호합니다.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                  <div className="flex items-start gap-4 p-3 bg-orange-50 rounded-lg">
+                    <div className="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center">
+                      <Database className="w-6 h-6" />
+                    </div>
                     <div>
                       <h5 className="font-semibold">데이터 엔지니어</h5>
-                      <p className="text-sm text-gray-600">클라우드 기반 데이터 파이프라인 구축</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-orange-600">7천만원~1억원</div>
-                      <div className="text-xs text-gray-500">연봉</div>
+                      <p className="text-sm text-gray-600">
+                        클라우드 기반 데이터 파이프라인을 구축하고 
+                        빅데이터 처리 시스템을 설계합니다.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                  <div className="flex items-start gap-4 p-3 bg-red-50 rounded-lg">
+                    <div className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center">
+                      <Users className="w-6 h-6" />
+                    </div>
                     <div>
                       <h5 className="font-semibold">클라우드 컨설턴트</h5>
-                      <p className="text-sm text-gray-600">기업의 클라우드 전환 컨설팅</p>
+                      <p className="text-sm text-gray-600">
+                        기업의 클라우드 전환 전략을 수립하고 
+                        최적의 솔루션을 제안하는 컨설팅 업무를 수행합니다.
+                      </p>
                     </div>
-                    <div className="text-right">
-                      <div className="font-bold text-red-600">8천만원~1억5천만원</div>
-                      <div className="text-xs text-gray-500">연봉</div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-3 bg-teal-50 rounded-lg">
+                    <div className="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center">
+                      <Brain className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold">AI/ML 엔지니어</h5>
+                      <p className="text-sm text-gray-600">
+                        클라우드 AI 서비스를 활용하여 머신러닝 모델을 
+                        개발하고 배포하는 전문가입니다.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-yellow-50 p-4 rounded-lg">
-                <h4 className="font-bold text-yellow-800 mb-2">💡 왜 이렇게 연봉이 높을까?</h4>
+                <h4 className="font-bold text-yellow-800 mb-2">💡 왜 이런 직업들이 각광받을까?</h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
                   <li>• 급속한 디지털 전환으로 수요 급증</li>
-                  <li>• 전문 인력 부족 (공급 부족)</li>
-                  <li>• 기업의 핵심 인프라를 담당</li>
-                  <li>• 글로벌 시장에서 경쟁력 확보</li>
+                  <li>• 전문 인력 부족으로 공급이 수요를 따라가지 못함</li>
+                  <li>• 기업의 핵심 인프라를 담당하는 중요한 역할</li>
+                  <li>• 원격 근무가 가능한 글로벌 직업</li>
+                  <li>• 지속적인 기술 발전으로 미래 성장성 보장</li>
                 </ul>
               </div>
             </div>
@@ -528,7 +790,7 @@ const Index = () => {
 
       case 'student-action':
         return {
-          title: '고등학생을 위한 실전 가이드',
+          title: '실전 가이드',
           content: (
             <div className="space-y-6">
               <div>
@@ -569,7 +831,7 @@ const Index = () => {
                       <li>• AWS Cloud Practitioner (입문자용)</li>
                       <li>• 온라인 무료 교육 자료 활용</li>
                       <li>• 시험비 150달러 (대학 진학 시 유리)</li>
-                      <li>• 고등학생도 충분히 취득 가능</li>
+                      <li>• 충분히 취득 가능한 자격증</li>
                     </ul>
                   </div>
                 </div>
@@ -582,6 +844,176 @@ const Index = () => {
                   <li>• 생활코딩 AWS 강의 (무료)</li>
                   <li>• 인프런, 유데미 AWS 강의</li>
                   <li>• AWS 공식 문서 (한국어 지원)</li>
+                  <li>• AWS 유튜브 채널</li>
+                  <li>• 클라우드 관련 온라인 커뮤니티 참여</li>
+                </ul>
+              </div>
+
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h4 className="font-bold text-green-800 mb-2">🎯 단기 목표 (3-6개월)</h4>
+                <ul className="text-sm text-green-700 space-y-1">
+                  <li>• AWS 기본 개념 이해</li>
+                  <li>• 간단한 웹사이트 배포 경험</li>
+                  <li>• 클라우드 관련 온라인 강의 1개 이상 완주</li>
+                  <li>• 개인 프로젝트 1개 완성</li>
+                </ul>
+              </div>
+
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-bold text-purple-800 mb-2">🚀 장기 목표 (1-2년)</h4>
+                <ul className="text-sm text-purple-700 space-y-1">
+                  <li>• AWS 자격증 취득</li>
+                  <li>• 복잡한 클라우드 아키텍처 이해</li>
+                  <li>• 오픈소스 프로젝트 기여</li>
+                  <li>• 클라우드 관련 인턴십 또는 대회 참가</li>
+                </ul>
+              </div>
+            </div>
+          )
+        };
+
+      case 'security-basics':
+        return {
+          title: '클라우드 보안 완전 가이드',
+          content: (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-bold mb-3">AWS 보안의 기본 원칙</h4>
+                <div className="bg-red-50 p-4 rounded-lg mb-4">
+                  <p className="text-red-800 font-semibold mb-2">⚠️ 보안은 선택이 아닌 필수입니다!</p>
+                  <p className="text-sm text-red-700">
+                    클라우드는 편리하지만, 잘못 설정하면 전 세계에 데이터가 노출될 수 있습니다. 
+                    보안 설정은 처음부터 올바르게 해야 합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">핵심 보안 원칙</h4>
+                <div className="space-y-4">
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <h5 className="font-semibold">1. 최소 권한 원칙 (Principle of Least Privilege)</h5>
+                    <p className="text-sm text-gray-600 mb-2">사용자에게 꼭 필요한 최소한의 권한만 부여하는 것</p>
+                    <div className="bg-blue-50 p-3 rounded-lg">
+                      <p className="text-sm"><strong>예시:</strong></p>
+                      <p className="text-sm text-gray-600">
+                        개발자에게 모든 AWS 서비스 권한을 주는 대신, 
+                        개발에 필요한 EC2, S3 권한만 부여하기
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h5 className="font-semibold">2. 다중 인증 (Multi-Factor Authentication, MFA)</h5>
+                    <p className="text-sm text-gray-600 mb-2">비밀번호 + 추가 인증 수단을 함께 사용</p>
+                    <div className="bg-green-50 p-3 rounded-lg">
+                      <p className="text-sm"><strong>설정 방법:</strong></p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Google Authenticator 또는 Authy 앱 설치</li>
+                        <li>• AWS 콘솔에서 MFA 활성화</li>
+                        <li>• 로그인 시 6자리 코드 추가 입력</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-purple-500 pl-4">
+                    <h5 className="font-semibold">3. 암호화 (Encryption)</h5>
+                    <p className="text-sm text-gray-600 mb-2">저장되는 데이터와 전송되는 데이터 모두 암호화</p>
+                    <div className="bg-purple-50 p-3 rounded-lg">
+                      <p className="text-sm"><strong>AWS 암호화 옵션:</strong></p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• S3: 서버사이드 암호화 (SSE) 활성화</li>
+                        <li>• EBS: 볼륨 암호화 설정</li>
+                        <li>• RDS: 암호화된 데이터베이스 생성</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-orange-500 pl-4">
+                    <h5 className="font-semibold">4. 네트워크 보안</h5>
+                    <p className="text-sm text-gray-600 mb-2">불필요한 네트워크 접근을 차단하고 안전한 연결만 허용</p>
+                    <div className="bg-orange-50 p-3 rounded-lg">
+                      <p className="text-sm"><strong>주요 설정:</strong></p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Security Groups: 방화벽 규칙 설정</li>
+                        <li>• VPC: 가상 네트워크 격리</li>
+                        <li>• NACLs: 서브넷 레벨 보안 제어</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">실제 보안 사고 사례와 대응방법</h4>
+                <div className="space-y-3">
+                  <div className="border border-red-200 p-4 rounded-lg bg-red-50">
+                    <h5 className="font-semibold text-red-800">🚨 S3 버킷 공개 설정</h5>
+                    <p className="text-sm text-red-700 mb-2">
+                      실수로 S3 버킷을 "Public"으로 설정하여 개인정보가 전 세계에 노출된 사례들이 많습니다.
+                    </p>
+                    <p className="text-sm font-semibold text-red-800">대응방법:</p>
+                    <ul className="text-sm text-red-700 space-y-1">
+                      <li>• S3 버킷 정기적으로 검토</li>
+                      <li>• AWS Config로 자동 모니터링 설정</li>
+                      <li>• 버킷 생성 시 기본값을 Private로 설정</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-orange-200 p-4 rounded-lg bg-orange-50">
+                    <h5 className="font-semibold text-orange-800">💳 과도한 요금 청구</h5>
+                    <p className="text-sm text-orange-700 mb-2">
+                      실수로 비싼 인스턴스를 켜두거나, 무한 루프로 인한 과도한 리소스 사용
+                    </p>
+                    <p className="text-sm font-semibold text-orange-800">대응방법:</p>
+                    <ul className="text-sm text-orange-700 space-y-1">
+                      <li>• CloudWatch 알람으로 비용 모니터링</li>
+                      <li>• AWS Budgets로 예산 한도 설정</li>
+                      <li>• 사용하지 않는 리소스 정기 정리</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-3">보안 체크리스트</h4>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">AWS 계정에 MFA 설정</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">IAM 사용자별 개별 계정 생성 (루트 계정 직접 사용 금지)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">강력한 비밀번호 정책 설정</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">CloudTrail로 모든 API 호출 로깅</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">정기적인 보안 검토 및 업데이트</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" className="w-4 h-4" />
+                      <span className="text-sm">비용 알림 설정</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-bold text-blue-800 mb-2">🛡️ 보안 관련 AWS 서비스</h4>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• <strong>AWS Security Hub:</strong> 보안 상태 통합 대시보드</li>
+                  <li>• <strong>Amazon GuardDuty:</strong> AI 기반 위협 탐지</li>
+                  <li>• <strong>AWS WAF:</strong> 웹 애플리케이션 방화벽</li>
+                  <li>• <strong>AWS Inspector:</strong> 애플리케이션 보안 평가</li>
                 </ul>
               </div>
             </div>
@@ -940,7 +1372,7 @@ const Index = () => {
                     <p>급성장하면서 서버 관리의 어려움을 겪게 됨</p>
                     <p>내부적으로 서버 관리 시스템을 개발</p>
                     <p className="font-bold text-blue-600">
-                      "이 시스템을 다른 회사들도 사용할 수 있게 하면 어떨까?"
+                      "이걸 다른 회사들도 사용할 수 있게 하면 어떨까?"
                     </p>
                   </div>
                 </CardContent>
