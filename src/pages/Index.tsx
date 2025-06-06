@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -29,6 +28,7 @@ import {
 
 const Index = () => {
   const [currentSection, setCurrentSection] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const sections = [
@@ -151,37 +151,49 @@ const Index = () => {
   const goToNextSection = () => {
     const nextSection = currentSection + 1;
     if (nextSection < sections.length) {
-      setCurrentSection(nextSection);
+      setIsTransitioning(true);
       setTimeout(() => {
-        sectionRefs.current[nextSection]?.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
+        setCurrentSection(nextSection);
+        setIsTransitioning(false);
+        setTimeout(() => {
+          sectionRefs.current[nextSection]?.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      }, 300);
     }
   };
 
   const goToPreviousSection = () => {
     const prevSection = currentSection - 1;
     if (prevSection >= 0) {
-      setCurrentSection(prevSection);
+      setIsTransitioning(true);
       setTimeout(() => {
-        sectionRefs.current[prevSection]?.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
+        setCurrentSection(prevSection);
+        setIsTransitioning(false);
+        setTimeout(() => {
+          sectionRefs.current[prevSection]?.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      }, 300);
     }
   };
 
   const goToSection = (index: number) => {
-    setCurrentSection(index);
+    setIsTransitioning(true);
     setTimeout(() => {
-      sectionRefs.current[index]?.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }, 100);
+      setCurrentSection(index);
+      setIsTransitioning(false);
+      setTimeout(() => {
+        sectionRefs.current[index]?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }, 300);
   };
 
   const renderSection = () => {
@@ -189,14 +201,16 @@ const Index = () => {
     const IconComponent = section.icon;
 
     return (
-      <div className="space-y-8">
+      <div className={`space-y-8 transition-all duration-500 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
         {/* Section Header */}
         <div 
           ref={(el) => sectionRefs.current[currentSection] = el}
-          className={`bg-gradient-to-r ${section.color} p-12 rounded-2xl text-white text-center`}
+          className={`bg-gradient-to-r ${section.color} p-12 rounded-2xl text-white text-center transform hover:scale-105 transition-all duration-300 shadow-2xl`}
         >
           <div className="flex flex-col items-center gap-6">
-            <IconComponent className="w-20 h-20" />
+            <div className="animate-pulse">
+              <IconComponent className="w-20 h-20" />
+            </div>
             <h2 className="text-4xl font-bold">{section.title}</h2>
           </div>
         </div>
@@ -204,21 +218,51 @@ const Index = () => {
         {/* Section Content */}
         <div className="space-y-6">
           {currentSection === 0 && (
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold">우리가 매일 사용하는 클라우드</h3>
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-center">우리가 매일 사용하는 클라우드</h3>
+              <p className="text-lg text-gray-600 text-center leading-relaxed">
+                클라우드는 이제 우리 일상 깊숙이 들어와 있습니다. 아침에 일어나서 스마트폰을 확인하는 순간부터 
+                밤에 잠들기 전까지, 우리는 수많은 클라우드 서비스를 사용하고 있습니다.
+              </p>
               <div className="grid md:grid-cols-2 gap-6">
-                <Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-6">
-                    <Smartphone className="w-8 h-8 mb-4 text-blue-500" />
-                    <h4 className="font-bold mb-2">스마트폰</h4>
-                    <p>사진을 찍으면 자동으로 구글 포토나 아이클라우드에 저장됩니다.</p>
+                    <Smartphone className="w-12 h-12 mb-4 text-blue-500" />
+                    <h4 className="text-xl font-bold mb-3">스마트폰 사진</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      카메라로 찍은 사진이 자동으로 구글 포토나 아이클라우드에 저장됩니다. 
+                      언제 어디서든 접근할 수 있고, 친구들과 쉽게 공유할 수 있습니다.
+                    </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-6">
-                    <Gamepad2 className="w-8 h-8 mb-4 text-green-500" />
-                    <h4 className="font-bold mb-2">게임</h4>
-                    <p>온라인 게임의 서버는 대부분 클라우드에서 운영됩니다.</p>
+                    <Gamepad2 className="w-12 h-12 mb-4 text-green-500" />
+                    <h4 className="text-xl font-bold mb-3">온라인 게임</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      리그오브레전드, 배틀그라운드 같은 게임들은 모두 클라우드 서버에서 운영됩니다. 
+                      전 세계 수백만 명이 동시에 게임을 즐길 수 있는 이유입니다.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6">
+                    <Globe className="w-12 h-12 mb-4 text-purple-500" />
+                    <h4 className="text-xl font-bold mb-3">소셜 미디어</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      인스타그램, 틱톡, 유튜브... 우리가 매일 보는 모든 콘텐츠들이 
+                      클라우드에 저장되고 전 세계로 배포됩니다.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6">
+                    <BookOpen className="w-12 h-12 mb-4 text-orange-500" />
+                    <h4 className="text-xl font-bold mb-3">온라인 수업</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      줌, 구글 클래스룸 등으로 진행되는 온라인 수업도 모두 클라우드 기술 덕분입니다. 
+                      코로나19 때 우리가 집에서도 공부할 수 있었던 이유죠.
+                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -226,74 +270,244 @@ const Index = () => {
           )}
 
           {currentSection === 1 && (
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold">90년대 vs 현재</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardContent className="p-6">
-                    <h4 className="font-bold mb-4 text-gray-600">1990년대</h4>
-                    <ul className="space-y-2">
-                      <li>• 필름 카메라로 사진 촬영</li>
-                      <li>• 현상소에서 인화</li>
-                      <li>• 앨범에 보관</li>
-                      <li>• 친구들에게 직접 전달</li>
-                    </ul>
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-center">90년대 vs 현재</h3>
+              <p className="text-lg text-gray-600 text-center leading-relaxed">
+                불과 30년 전과 비교하면 기술의 변화는 정말 놀랍습니다. 
+                특히 사진을 예로 들어보면 그 차이를 확실히 느낄 수 있습니다.
+              </p>
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="border-2 border-gray-300">
+                  <CardContent className="p-8">
+                    <Camera className="w-12 h-12 mb-4 text-gray-500" />
+                    <h4 className="text-2xl font-bold mb-4 text-gray-600">1990년대</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                        <span>필름 카메라로 사진 촬영 (36장 제한)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                        <span>현상소에서 필름 현상 (1-2일 소요)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                        <span>인화지에 사진 출력</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                        <span>앨범에 보관</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                        <span>친구들에게 직접 전달하거나 우편 발송</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 p-3 bg-gray-100 rounded-lg">
+                      <p className="text-sm text-gray-600">비용: 필름값 + 현상비 + 인화비 (약 1만원)</p>
+                    </div>
                   </CardContent>
                 </Card>
-                <Card>
-                  <CardContent className="p-6">
-                    <h4 className="font-bold mb-4 text-blue-600">현재</h4>
-                    <ul className="space-y-2">
-                      <li>• 스마트폰으로 사진 촬영</li>
-                      <li>• 클라우드에 자동 저장</li>
-                      <li>• 전 세계 어디서든 접근</li>
-                      <li>• SNS로 즉시 공유</li>
-                    </ul>
+                <Card className="border-2 border-blue-300 bg-blue-50">
+                  <CardContent className="p-8">
+                    <Smartphone className="w-12 h-12 mb-4 text-blue-500" />
+                    <h4 className="text-2xl font-bold mb-4 text-blue-600">현재 (2024년)</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>스마트폰으로 무제한 촬영</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>클라우드에 즉시 자동 저장</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>전 세계 어디서든 즉시 접근</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>AI가 자동으로 분류 및 검색</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>SNS로 전 세계에 즉시 공유</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 p-3 bg-blue-100 rounded-lg">
+                      <p className="text-sm text-blue-600">비용: 거의 무료 (데이터 요금만)</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="text-center mt-8">
+                <div className="inline-block p-4 bg-yellow-100 rounded-lg">
+                  <p className="text-lg font-semibold text-yellow-800">
+                    💡 이 모든 변화의 핵심이 바로 "클라우드" 기술입니다!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {currentSection === 2 && (
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-center">클라우드 컴퓨팅의 정의</h3>
+              <div className="text-center mb-8">
+                <div className="inline-block p-6 bg-blue-50 rounded-xl">
+                  <Cloud className="w-16 h-16 mx-auto mb-4 text-blue-500" />
+                  <p className="text-xl font-semibold text-blue-800 leading-relaxed">
+                    인터넷을 통해 컴퓨팅 자원을 <br />
+                    언제든지 빌려 쓸 수 있는 서비스
+                  </p>
+                </div>
+              </div>
+              
+              <Card className="border-2 border-blue-200">
+                <CardContent className="p-8">
+                  <h4 className="text-2xl font-bold mb-6 text-center">클라우드란 쉽게 말해서...</h4>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h5 className="text-lg font-bold text-red-600">기존 방식 (On-Premise)</h5>
+                      <div className="bg-red-50 p-4 rounded-lg">
+                        <p className="mb-2">🏠 집에서 컴퓨터를 직접 구매</p>
+                        <p className="mb-2">⚡ 전기료 계속 지불</p>
+                        <p className="mb-2">🔧 고장나면 직접 수리</p>
+                        <p>💾 용량 부족하면 새로 구매</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <h5 className="text-lg font-bold text-blue-600">클라우드 방식</h5>
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <p className="mb-2">☁️ 인터넷으로 컴퓨터 대여</p>
+                        <p className="mb-2">💰 사용한 만큼만 비용 지불</p>
+                        <p className="mb-2">🛠️ 관리는 업체가 알아서</p>
+                        <p>📈 필요하면 즉시 확장</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Zap className="w-12 h-12 mx-auto mb-4 text-yellow-500" />
+                    <h4 className="font-bold text-lg mb-2">On-Demand</h4>
+                    <p className="text-gray-600">필요할 때 즉시 사용 가능</p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6 text-center">
+                    <Globe className="w-12 h-12 mx-auto mb-4 text-green-500" />
+                    <h4 className="font-bold text-lg mb-2">Everywhere</h4>
+                    <p className="text-gray-600">인터넷만 있으면 어디서든</p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6 text-center">
+                    <DollarSign className="w-12 h-12 mx-auto mb-4 text-blue-500" />
+                    <h4 className="font-bold text-lg mb-2">Pay-as-you-go</h4>
+                    <p className="text-gray-600">사용한 만큼만 비용 지불</p>
                   </CardContent>
                 </Card>
               </div>
             </div>
           )}
 
-          {currentSection === 2 && (
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold">클라우드 컴퓨팅의 정의</h3>
-              <Card>
-                <CardContent className="p-6">
-                  <p className="text-lg mb-4">
-                    인터넷을 통해 컴퓨팅 자원(서버, 저장소, 데이터베이스, 네트워킹, 소프트웨어 등)을 
-                    온디맨드로 제공하는 서비스입니다.
-                  </p>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-bold mb-2">핵심 특징</h4>
-                    <ul className="space-y-1">
-                      <li>• 필요할 때만 사용 (On-demand)</li>
-                      <li>• 인터넷으로 접근</li>
-                      <li>• 사용한 만큼만 비용 지불</li>
-                      <li>• 자동 확장/축소</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )}
-
           {currentSection === 3 && (
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold">클라우드를 사용하는 이유</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Card>
-                  <CardContent className="p-4">
-                    <DollarSign className="w-6 h-6 mb-2 text-green-500" />
-                    <h4 className="font-bold">비용 절약</h4>
-                    <p className="text-sm">초기 투자 없이 필요한 만큼만 사용</p>
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-center">클라우드를 사용하는 이유</h3>
+              <p className="text-lg text-gray-600 text-center leading-relaxed">
+                전 세계 기업들이 클라우드로 전환하는 이유는 무엇일까요? 
+                개인부터 대기업까지 모두가 선택하는 클라우드의 장점을 알아보세요.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-l-4 border-green-500 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <DollarSign className="w-10 h-10 text-green-500" />
+                      <h4 className="text-xl font-bold">비용 절약</h4>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-gray-600">💰 초기 투자 비용 없음</p>
+                      <p className="text-gray-600">📊 사용한 만큼 지불</p>
+                      <p className="text-gray-600">🔧 유지보수 비용 절약</p>
+                      <div className="bg-green-50 p-3 rounded-lg mt-4">
+                        <p className="text-sm font-semibold text-green-800">
+                          예: 서버 1대 구매 시 500만원 → 클라우드 월 5만원부터
+                        </p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
-                <Card>
-                  <CardContent className="p-4">
-                    <Zap className="w-6 h-6 mb-2 text-yellow-500" />
-                    <h4 className="font-bold">빠른 확장</h4>
-                    <p className="text-sm">몇 분 만에 서버 추가/제거 가능</p>
+
+                <Card className="border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Zap className="w-10 h-10 text-blue-500" />
+                      <h4 className="text-xl font-bold">빠른 확장</h4>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-gray-600">⚡ 몇 분 만에 서버 추가</p>
+                      <p className="text-gray-600">📈 트래픽 증가 시 자동 확장</p>
+                      <p className="text-gray-600">📉 사용량 감소 시 자동 축소</p>
+                      <div className="bg-blue-50 p-3 rounded-lg mt-4">
+                        <p className="text-sm font-semibold text-blue-800">
+                          예: 게임 이벤트 시 서버 100배 확장 → 이벤트 종료 후 원복
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-purple-500 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Shield className="w-10 h-10 text-purple-500" />
+                      <h4 className="text-xl font-bold">안정성</h4>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-gray-600">🛡️ 99.99% 이상 안정성</p>
+                      <p className="text-gray-600">💾 자동 백업</p>
+                      <p className="text-gray-600">🌍 전 세계 데이터센터</p>
+                      <div className="bg-purple-50 p-3 rounded-lg mt-4">
+                        <p className="text-sm font-semibold text-purple-800">
+                          AWS는 한 해에 5분 정도만 서비스가 중단됩니다
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-orange-500 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Globe className="w-10 h-10 text-orange-500" />
+                      <h4 className="text-xl font-bold">글로벌 접근</h4>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-gray-600">🌏 전 세계 어디서든 접근</p>
+                      <p className="text-gray-600">📱 모든 기기에서 사용</p>
+                      <p className="text-gray-600">🔄 실시간 동기화</p>
+                      <div className="bg-orange-50 p-3 rounded-lg mt-4">
+                        <p className="text-sm font-semibold text-orange-800">
+                          한국에서 만든 앱을 전 세계에 즉시 배포 가능
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="text-center mt-8">
+                <Card className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  <CardContent className="p-6">
+                    <h4 className="text-xl font-bold mb-4">클라우드의 핵심 가치</h4>
+                    <p className="text-lg">
+                      "더 적은 비용으로, 더 빠르게, 더 안전하게, 더 크게"
+                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -652,7 +866,7 @@ const Index = () => {
               onClick={goToPreviousSection}
               disabled={currentSection === 0}
               variant="outline"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 transition-all duration-300 hover:scale-105"
             >
               <ChevronRight className="w-4 h-4 rotate-180" />
               이전
@@ -667,7 +881,7 @@ const Index = () => {
             <Button 
               onClick={goToNextSection}
               disabled={currentSection === sections.length - 1}
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105"
             >
               다음
               <ChevronRight className="w-4 h-4" />
@@ -675,7 +889,7 @@ const Index = () => {
           </div>
 
           {/* Main Content */}
-          <div className="bg-white rounded-3xl shadow-2xl p-8">
+          <div className="bg-white rounded-3xl shadow-2xl p-8 transition-all duration-500">
             {renderSection()}
           </div>
 
