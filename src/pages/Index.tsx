@@ -12,6 +12,16 @@ import Page07Database from "@/components/pages/Page07Database";
 import Page08Network from "@/components/pages/Page08Network";
 import Page09Security from "@/components/pages/Page09Security";
 import Page10AIML from "@/components/pages/Page10AIML";
+import Page11Lambda from "@/components/pages/Page11Lambda";
+import Page12ECS from "@/components/pages/Page12ECS";
+import Page13Serverless from "@/components/pages/Page13Serverless";
+import Page14DevOps from "@/components/pages/Page14DevOps";
+import Page15Analytics from "@/components/pages/Page15Analytics";
+import Page16IoT from "@/components/pages/Page16IoT";
+import Page17Mobile from "@/components/pages/Page17Mobile";
+import Page18GameDev from "@/components/pages/Page18GameDev";
+import Page19Careers from "@/components/pages/Page19Careers";
+import Page20Future from "@/components/pages/Page20Future";
 
 const Index = () => {
   const { exportToPDF } = usePDFExport();
@@ -42,16 +52,16 @@ const Index = () => {
         <Page08Network />
         <Page09Security />
         <Page10AIML />
-        
-        {/* Placeholder for remaining pages (11-20) - will be added in next iteration */}
-        <div className="min-h-screen flex items-center justify-center bg-muted/20">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">나머지 10개 페이지가 곧 추가됩니다</h2>
-            <p className="text-muted-foreground">
-              Page 11-20은 다음 단계에서 추가하겠습니다.
-            </p>
-          </div>
-        </div>
+        <Page11Lambda />
+        <Page12ECS />
+        <Page13Serverless />
+        <Page14DevOps />
+        <Page15Analytics />
+        <Page16IoT />
+        <Page17Mobile />
+        <Page18GameDev />
+        <Page19Careers />
+        <Page20Future />
       </div>
     </div>
   );

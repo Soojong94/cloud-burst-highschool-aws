@@ -1,0 +1,124 @@
+
+import { motion } from "framer-motion";
+import { Zap, DollarSign, Code, Timer } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+
+const Page11Lambda = () => {
+  const features = [
+    {
+      icon: Zap,
+      title: "서버리스",
+      description: "서버 관리 없이 코드만 업로드하면 실행"
+    },
+    {
+      icon: DollarSign,
+      title: "비용 효율적",
+      description: "실행 시간에 대해서만 요금 지불"
+    },
+    {
+      icon: Code,
+      title: "다양한 언어",
+      description: "Python, Node.js, Java, C# 등 지원"
+    },
+    {
+      icon: Timer,
+      title: "자동 확장",
+      description: "트래픽에 따라 자동으로 확장"
+    }
+  ];
+
+  return (
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="min-h-screen py-20 bg-muted/30"
+    >
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Lambda (서버리스 컴퓨팅)</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            서버 관리 없이 코드를 실행할 수 있는 서버리스 컴퓨팅 서비스입니다.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                <CardHeader className="text-center">
+                  <feature.icon className="w-12 h-12 mx-auto text-primary mb-4" />
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-center">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="text-lg px-8 py-4">
+                Lambda 활용 사례
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">AWS Lambda 완전 가이드</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">주요 특징</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    AWS Lambda는 이벤트에 응답하여 코드를 실행하고 자동으로 컴퓨팅 리소스를 관리합니다. 
+                    15분까지 실행되는 코드를 지원하며, 100ms 단위로 요금을 계산합니다.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">활용 사례</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    API 백엔드, 이미지 처리, 데이터 변환, 실시간 파일 처리, 
+                    IoT 백엔드, 채팅봇 등 다양한 용도로 활용할 수 있습니다.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">통합 서비스</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    API Gateway, S3, DynamoDB, SNS, SQS 등 200개 이상의 AWS 서비스와 
+                    완벽하게 통합되어 이벤트 기반 아키텍처를 구현할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+};
+
+export default Page11Lambda;
