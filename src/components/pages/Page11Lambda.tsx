@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { Zap, DollarSign, Code, Timer } from "lucide-react";
+import { Zap, DollarSign, Code, Timer, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -11,25 +10,29 @@ const Page11Lambda = () => {
       icon: Zap,
       title: "서버리스",
       description: "서버 관리 없이 코드만 업로드하면 실행",
-      color: "text-purple-400"
+      color: "text-purple-400",
+      cardStyle: "card-ai"
     },
     {
       icon: DollarSign,
       title: "비용 효율적",
       description: "실행 시간에 대해서만 요금 지불",
-      color: "text-green-400"
+      color: "text-green-400",
+      cardStyle: "card-data"
     },
     {
       icon: Code,
       title: "다양한 언어",
       description: "Python, Node.js, Java, C# 등 지원",
-      color: "text-blue-400"
+      color: "text-blue-400",
+      cardStyle: "card-tech"
     },
     {
       icon: Timer,
       title: "자동 확장",
       description: "트래픽에 따라 자동으로 확장",
-      color: "text-orange-400"
+      color: "text-orange-400",
+      cardStyle: "card-neon"
     }
   ];
 
@@ -39,9 +42,14 @@ const Page11Lambda = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-gradient-to-br from-background via-background to-purple-500/10"
+      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-purple-900/30 bg-tech-pattern relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* 배경 요소들 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-pink-500/5" />
+      <div className="absolute top-20 left-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl float-animation" />
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -49,8 +57,14 @@ const Page11Lambda = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple">Lambda (서버리스 컴퓨팅)</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="relative mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple title-main title-section">
+              Lambda (서버리스 컴퓨팅)
+            </h2>
+            <Sparkles className="w-8 h-8 absolute top-0 right-1/3 text-purple-400 animate-pulse" />
+            <Sparkles className="w-6 h-6 absolute bottom-0 left-1/3 text-pink-400 animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20">
             서버 관리 없이 코드를 실행할 수 있는 서버리스 컴퓨팅 서비스입니다.
           </p>
         </motion.div>
@@ -64,7 +78,7 @@ const Page11Lambda = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full bg-gradient-card hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 border-purple-500/30">
+              <Card className={`h-full ${feature.cardStyle} hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105`}>
                 <CardHeader className="text-center">
                   <feature.icon className={`w-12 h-12 mx-auto ${feature.color} mb-4 drop-shadow-lg`} />
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -86,7 +100,7 @@ const Page11Lambda = () => {
         >
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-500/80 hover:to-pink-500/80">
+              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-500/80 hover:to-pink-500/80 pulse-glow">
                 Lambda 활용 사례
               </Button>
             </DialogTrigger>
@@ -95,24 +109,24 @@ const Page11Lambda = () => {
                 <DialogTitle className="text-2xl text-gradient-purple">AWS Lambda 완전 가이드</DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
-                <div>
+                <div className="dialog-section-purple">
                   <h3 className="text-xl font-semibold mb-3 text-purple-400">주요 특징</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    AWS Lambda는 이벤트에 응답하여 코드를 실행하고 자동으로 컴퓨팅 리소스를 관리합니다. 
+                    AWS Lambda는 이벤트에 응답하여 코드를 실행하고 자동으로 컴퓨팅 리소스를 관리합니다.
                     15분까지 실행되는 코드를 지원하며, 100ms 단위로 요금을 계산합니다.
                   </p>
                 </div>
-                <div>
+                <div className="dialog-section-blue">
                   <h3 className="text-xl font-semibold mb-3 text-blue-400">활용 사례</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    API 백엔드, 이미지 처리, 데이터 변환, 실시간 파일 처리, 
+                    API 백엔드, 이미지 처리, 데이터 변환, 실시간 파일 처리,
                     IoT 백엔드, 채팅봇 등 다양한 용도로 활용할 수 있습니다.
                   </p>
                 </div>
-                <div>
+                <div className="dialog-section-green">
                   <h3 className="text-xl font-semibold mb-3 text-green-400">통합 서비스</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    API Gateway, S3, DynamoDB, SNS, SQS 등 200개 이상의 AWS 서비스와 
+                    API Gateway, S3, DynamoDB, SNS, SQS 등 200개 이상의 AWS 서비스와
                     완벽하게 통합되어 이벤트 기반 아키텍처를 구현할 수 있습니다.
                   </p>
                 </div>

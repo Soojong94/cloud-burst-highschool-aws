@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { Rocket, Brain, Zap, Globe } from "lucide-react";
+import { Rocket, Brain, Zap, Globe, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -10,22 +9,30 @@ const Page20Future = () => {
     {
       icon: Brain,
       title: "AI/ML 통합",
-      description: "모든 서비스에 AI 기능 내장"
+      description: "모든 서비스에 AI 기능 내장",
+      color: "text-purple-400",
+      cardStyle: "card-ai"
     },
     {
       icon: Zap,
       title: "서버리스 확산",
-      description: "더 많은 완전 관리형 서비스"
+      description: "더 많은 완전 관리형 서비스",
+      color: "text-yellow-400",
+      cardStyle: "card-neon"
     },
     {
       icon: Globe,
       title: "엣지 컴퓨팅",
-      description: "지연 시간 최소화"
+      description: "지연 시간 최소화",
+      color: "text-cyan-400",
+      cardStyle: "card-tech"
     },
     {
       icon: Rocket,
       title: "양자 컴퓨팅",
-      description: "Amazon Braket의 발전"
+      description: "Amazon Braket의 발전",
+      color: "text-orange-400",
+      cardStyle: "card-data"
     }
   ];
 
@@ -35,9 +42,14 @@ const Page20Future = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-gradient-to-br from-background to-muted"
+      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-purple-900/30 bg-pattern-diagonal relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* 배경 요소들 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-cyan-500/5" />
+      <div className="absolute top-32 left-32 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl float-animation" />
+      <div className="absolute bottom-32 right-32 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '3s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -45,8 +57,14 @@ const Page20Future = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">AWS의 미래</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="relative mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple title-main title-section">
+              AWS의 미래
+            </h2>
+            <Sparkles className="w-8 h-8 absolute top-0 right-1/4 text-purple-400 animate-pulse" />
+            <Sparkles className="w-6 h-6 absolute bottom-0 left-1/4 text-cyan-400 animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-purple-500/20">
             클라우드 컴퓨팅의 미래와 AWS가 나아가는 방향을 살펴보세요.
           </p>
         </motion.div>
@@ -60,9 +78,9 @@ const Page20Future = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+              <Card className={`h-full ${trend.cardStyle} hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105`}>
                 <CardHeader className="text-center">
-                  <trend.icon className="w-12 h-12 mx-auto text-primary mb-4" />
+                  <trend.icon className={`w-12 h-12 mx-auto ${trend.color} mb-4 drop-shadow-lg`} />
                   <CardTitle className="text-xl">{trend.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -82,33 +100,33 @@ const Page20Future = () => {
         >
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4">
+              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-500/80 hover:to-cyan-500/80 pulse-glow">
                 미래 기술 트렌드
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-gradient-to-br from-card to-background border-purple-500/30">
               <DialogHeader>
-                <DialogTitle className="text-2xl">클라우드의 미래</DialogTitle>
+                <DialogTitle className="text-2xl text-gradient-purple">클라우드의 미래</DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">AI-First 클라우드</h3>
+                <div className="dialog-section-purple">
+                  <h3 className="text-xl font-semibold mb-3 text-purple-400">AI-First 클라우드</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    모든 AWS 서비스에 AI 기능이 기본적으로 내장되어, 
+                    모든 AWS 서비스에 AI 기능이 기본적으로 내장되어,
                     개발자들이 별도의 ML 지식 없이도 지능형 애플리케이션을 구축할 수 있게 됩니다.
                   </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">완전 자동화</h3>
+                <div className="dialog-section-cyan">
+                  <h3 className="text-xl font-semibold mb-3 text-cyan-400">완전 자동화</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    인프라 관리, 보안, 최적화가 완전 자동화되어 
+                    인프라 관리, 보안, 최적화가 완전 자동화되어
                     개발자는 비즈니스 로직에만 집중할 수 있는 환경이 조성됩니다.
                   </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">지속가능한 클라우드</h3>
+                <div className="dialog-section-green">
+                  <h3 className="text-xl font-semibold mb-3 text-green-400">지속가능한 클라우드</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    AWS는 2025년까지 100% 재생에너지 사용을 목표로 하며, 
+                    AWS는 2025년까지 100% 재생에너지 사용을 목표로 하며,
                     탄소 중립적인 클라우드 서비스를 제공하기 위해 노력하고 있습니다.
                   </p>
                 </div>
@@ -122,14 +140,14 @@ const Page20Future = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/20"
         >
-          <h3 className="text-3xl font-bold mb-6">AWS와 함께하는 여러분의 여정</h3>
+          <h3 className="text-3xl font-bold mb-6 text-gradient-orange title-section">AWS와 함께하는 여러분의 여정</h3>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            클라우드 기술은 계속 발전하고 있습니다. 
+            클라우드 기술은 계속 발전하고 있습니다.
             AWS와 함께 미래를 준비하고, 여러분의 아이디어를 현실로 만들어보세요.
           </p>
-          <Button size="lg" className="text-lg px-12 py-4">
+          <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-500/80 hover:to-pink-500/80 pulse-glow">
             지금 시작하기
           </Button>
         </motion.div>

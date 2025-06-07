@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { BarChart3, Database, Zap, Search } from "lucide-react";
+import { BarChart3, Database, Zap, Search, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -11,25 +10,33 @@ const Page15Analytics = () => {
       icon: BarChart3,
       title: "Redshift",
       description: "데이터 웨어하우스",
-      detail: "페타바이트 규모 분석"
+      detail: "페타바이트 규모 분석",
+      color: "text-red-400",
+      cardStyle: "card-security"
     },
     {
       icon: Database,
       title: "Athena",
       description: "서버리스 쿼리",
-      detail: "S3 데이터 직접 분석"
+      detail: "S3 데이터 직접 분석",
+      color: "text-blue-400",
+      cardStyle: "card-tech"
     },
     {
       icon: Zap,
       title: "Kinesis",
       description: "실시간 데이터 스트리밍",
-      detail: "실시간 데이터 수집 및 처리"
+      detail: "실시간 데이터 수집 및 처리",
+      color: "text-yellow-400",
+      cardStyle: "card-neon"
     },
     {
       icon: Search,
       title: "Elasticsearch",
       description: "검색 및 분석",
-      detail: "로그 분석 및 검색 엔진"
+      detail: "로그 분석 및 검색 엔진",
+      color: "text-green-400",
+      cardStyle: "card-data"
     }
   ];
 
@@ -39,9 +46,14 @@ const Page15Analytics = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-muted/30"
+      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-red-900/30 bg-tech-pattern relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* 배경 요소들 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-transparent to-yellow-500/5" />
+      <div className="absolute top-20 right-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl float-animation" />
+      <div className="absolute bottom-20 left-20 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -49,8 +61,14 @@ const Page15Analytics = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">분석 및 빅데이터</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="relative mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-orange title-main title-section">
+              분석 및 빅데이터
+            </h2>
+            <Sparkles className="w-8 h-8 absolute top-0 right-1/3 text-red-400 animate-pulse" />
+            <Sparkles className="w-6 h-6 absolute bottom-0 left-1/3 text-yellow-400 animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-red-500/20">
             대용량 데이터를 수집, 저장, 처리, 분석할 수 있는 완전 관리형 서비스들입니다.
           </p>
         </motion.div>
@@ -64,9 +82,9 @@ const Page15Analytics = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+              <Card className={`h-full ${service.cardStyle} hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300 hover:scale-105`}>
                 <CardHeader className="text-center">
-                  <service.icon className="w-12 h-12 mx-auto text-primary mb-4" />
+                  <service.icon className={`w-12 h-12 mx-auto ${service.color} mb-4 drop-shadow-lg`} />
                   <CardTitle className="text-xl">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -87,33 +105,33 @@ const Page15Analytics = () => {
         >
           <Dialog>
             <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4">
+              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-500/80 hover:to-yellow-500/80 pulse-glow">
                 데이터 분석 아키텍처
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-gradient-to-br from-card to-background border-red-500/30">
               <DialogHeader>
-                <DialogTitle className="text-2xl">AWS 분석 서비스 가이드</DialogTitle>
+                <DialogTitle className="text-2xl text-gradient-orange">AWS 분석 서비스 가이드</DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">데이터 레이크 아키텍처</h3>
+                <div className="dialog-section-blue">
+                  <h3 className="text-xl font-semibold mb-3 text-blue-400">데이터 레이크 아키텍처</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    S3를 중심으로 한 데이터 레이크를 구축하고, Glue로 ETL 작업을 수행하며, 
+                    S3를 중심으로 한 데이터 레이크를 구축하고, Glue로 ETL 작업을 수행하며,
                     Athena로 서버리스 쿼리를 실행할 수 있습니다.
                   </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">실시간 분석</h3>
+                <div className="dialog-section-yellow">
+                  <h3 className="text-xl font-semibold mb-3 text-yellow-400">실시간 분석</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Kinesis를 통해 실시간 데이터 스트림을 처리하고, 
+                    Kinesis를 통해 실시간 데이터 스트림을 처리하고,
                     Lambda나 Kinesis Analytics로 실시간 분석을 수행할 수 있습니다.
                   </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">기업용 데이터 웨어하우스</h3>
+                <div className="dialog-section-red">
+                  <h3 className="text-xl font-semibold mb-3 text-red-400">기업용 데이터 웨어하우스</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Redshift를 사용하여 페타바이트 규모의 데이터 웨어하우스를 구축하고, 
+                    Redshift를 사용하여 페타바이트 규모의 데이터 웨어하우스를 구축하고,
                     QuickSight로 비즈니스 인텔리전스를 구현할 수 있습니다.
                   </p>
                 </div>

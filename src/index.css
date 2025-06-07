@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,10 +86,12 @@
 @layer base {
   * {
     @apply border-border;
+    font-family: 'Noto Sans KR', 'Malgun Gothic', '맑은 고딕', system-ui, sans-serif;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Noto Sans KR', 'Malgun Gothic', '맑은 고딕', system-ui, sans-serif;
   }
 }
 
@@ -99,20 +100,178 @@
   .text-gradient-blue {
     @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
   }
-  
+
   .text-gradient-purple {
     @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
   }
-  
+
   .text-gradient-green {
     @apply bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent;
   }
-  
+
   .text-gradient-orange {
     @apply bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent;
   }
-  
+
   .bg-gradient-card {
     @apply bg-gradient-to-br from-card to-muted border border-primary/20;
+  }
+
+  /* 새로운 배경 패턴들 */
+  .bg-pattern-dots {
+    background-image: radial-gradient(circle, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-pattern-grid {
+    background-image:
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .bg-pattern-diagonal {
+    background-image: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 10px,
+        rgba(59, 130, 246, 0.05) 10px,
+        rgba(59, 130, 246, 0.05) 20px);
+  }
+
+  .bg-tech-pattern {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .bg-circuit-pattern {
+    background-image:
+      linear-gradient(90deg, rgba(34, 197, 94, 0.1) 50%, transparent 50%),
+      linear-gradient(rgba(34, 197, 94, 0.1) 50%, transparent 50%);
+    background-size: 60px 60px;
+  }
+
+  /* 새로운 카드 스타일들 */
+  .card-neon {
+    @apply bg-gradient-to-br from-card to-background border border-primary/30 shadow-lg;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+
+  .card-tech {
+    @apply bg-gradient-to-br from-slate-900 to-slate-800 border border-cyan-500/30;
+    background-image: linear-gradient(45deg, transparent 40%, rgba(34, 211, 238, 0.1) 50%, transparent 60%);
+  }
+
+  .card-ai {
+    @apply bg-gradient-to-br from-purple-900/50 to-pink-900/50 border border-purple-500/30;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-data {
+    @apply bg-gradient-to-br from-green-900/50 to-emerald-900/50 border border-green-500/30;
+  }
+
+  .card-security {
+    @apply bg-gradient-to-br from-red-900/50 to-orange-900/50 border border-red-500/30;
+  }
+
+  /* 애니메이션 효과 */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  /* 타이틀 스타일 개선 */
+  .title-main {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    letter-spacing: 2px;
+  }
+
+  .title-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+
+    100% {
+      left: 100%;
+    }
+  }
+}
+
+/* 다이얼로그 섹션 스타일 */
+@layer utilities {
+  .dialog-section-blue {
+    @apply p-4 bg-blue-900/20 rounded-xl border border-blue-500/30;
+  }
+
+  .dialog-section-green {
+    @apply p-4 bg-green-900/20 rounded-xl border border-green-500/30;
+  }
+
+  .dialog-section-purple {
+    @apply p-4 bg-purple-900/20 rounded-xl border border-purple-500/30;
+  }
+
+  .dialog-section-orange {
+    @apply p-4 bg-orange-900/20 rounded-xl border border-orange-500/30;
+  }
+
+  .dialog-section-cyan {
+    @apply p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30;
+  }
+
+  .dialog-section-pink {
+    @apply p-4 bg-pink-900/20 rounded-xl border border-pink-500/30;
+  }
+
+  .dialog-section-red {
+    @apply p-4 bg-red-900/20 rounded-xl border border-red-500/30;
+  }
+
+  .dialog-section-yellow {
+    @apply p-4 bg-yellow-900/20 rounded-xl border border-yellow-500/30;
   }
 }

@@ -95,21 +95,21 @@ const Page05EC2 = () => {
                 <DialogTitle className="text-2xl text-gradient-purple">EC2 완전 가이드</DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
-                <div>
+                <div className="p-4 bg-blue-900/20 rounded-xl border border-blue-500/30">
                   <h3 className="text-xl font-semibold mb-3 text-blue-400">인스턴스 유형</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
                     t2.micro부터 고성능 GPU 인스턴스까지, 다양한 워크로드에 최적화된 인스턴스를 제공합니다.
                     범용, 컴퓨팅 최적화, 메모리 최적화, 스토리지 최적화, 가속 컴퓨팅 등 5가지 카테고리로 분류됩니다.
                   </p>
                 </div>
-                <div>
+                <div className="p-4 bg-green-900/20 rounded-xl border border-green-500/30">
                   <h3 className="text-xl font-semibold mb-3 text-green-400">요금 모델</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    온디맨드, 예약 인스턴스, 스팟 인스턴스, 전용 호스트 등 다양한 요금 모델을 통해 
+                    온디맨드, 예약 인스턴스, 스팟 인스턴스, 전용 호스트 등 다양한 요금 모델을 통해
                     비용을 최적화할 수 있습니다. 워크로드의 특성에 따라 최대 90%까지 비용을 절약할 수 있습니다.
                   </p>
                 </div>
-                <div>
+                <div className="p-4 bg-purple-900/20 rounded-xl border border-purple-500/30">
                   <h3 className="text-xl font-semibold mb-3 text-purple-400">보안 기능</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
                     보안 그룹, VPC, IAM 역할, 키 페어 등을 통해 강력한 보안을 제공합니다.
