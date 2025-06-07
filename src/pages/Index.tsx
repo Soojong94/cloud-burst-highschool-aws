@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Download, FileText } from "lucide-react";
-import { usePDFExport } from "@/hooks/usePDFExport";
 import Page01Hero from "@/components/pages/Page01Hero";
 import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
 import Page03AmazonStory from "@/components/pages/Page03AmazonStory";
@@ -23,7 +22,7 @@ import Page19Careers from "@/components/pages/Page19Careers";
 import Page20Future from "@/components/pages/Page20Future";
 
 const Index = () => {
-  const { exportToPDF } = usePDFExport();
+
 
   return (
     <div className="min-h-screen">
