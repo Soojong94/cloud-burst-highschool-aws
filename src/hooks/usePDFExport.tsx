@@ -9,19 +9,10 @@ export const usePDFExport = () => {
     if (!element) return;
 
     try {
-      // 임시로 스크롤을 최상단으로 이동
-      const originalScrollTop = window.pageYOffset;
-      window.scrollTo(0, 0);
+      // 모든 페이지 섹션 찾기
+      const sections = element.querySelectorAll('section');
+      if (sections.length === 0) return;
 
-      // 전체 페이지 높이 계산
-      const canvas = await html2canvas(element, {
-        height: element.scrollHeight,
-        width: element.scrollWidth,
-        useCORS: true,
-        scale: 1,
-      });
-
-      const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
@@ -30,31 +21,46 @@ export const usePDFExport = () => {
 
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 0;
 
-      // 이미지가 한 페이지에 들어가지 않으면 여러 페이지로 분할
-      const pageHeight = imgHeight * ratio;
-      let heightLeft = pageHeight;
-      let position = 0;
+      // 첫 번째 페이지는 addPage 없이 시작
+      let isFirstPage = true;
 
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, pageHeight);
-      heightLeft -= pdfHeight;
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i] as HTMLElement;
+        
+        // 각 섹션을 개별적으로 캡처
+        const canvas = await html2canvas(section, {
+          width: section.scrollWidth,
+          height: section.scrollHeight,
+          useCORS: true,
+          scale: 0.8,
+          backgroundColor: '#ffffff'
+        });
 
-      while (heightLeft >= 0) {
-        position = heightLeft - pageHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', imgX, position, imgWidth * ratio, pageHeight);
-        heightLeft -= pdfHeight;
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        
+        // PDF 크기에 맞게 비율 계산
+        const ratio = Math.min(pdfWidth / (imgWidth * 0.264583), pdfHeight / (imgHeight * 0.264583));
+        const scaledWidth = imgWidth * 0.264583 * ratio;
+        const scaledHeight = imgHeight * 0.264583 * ratio;
+        
+        // 페이지 중앙에 배치
+        const x = (pdfWidth - scaledWidth) / 2;
+        const y = (pdfHeight - scaledHeight) / 2;
+
+        // 첫 번째 페이지가 아니면 새 페이지 추가
+        if (!isFirstPage) {
+          pdf.addPage();
+        }
+        isFirstPage = false;
+
+        // 이미지를 PDF에 추가
+        pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
       }
 
       pdf.save('AWS_완전정복.pdf');
-
-      // 원래 스크롤 위치로 복원
-      window.scrollTo(0, originalScrollTop);
     } catch (error) {
       console.error('PDF 생성 중 오류 발생:', error);
     }
