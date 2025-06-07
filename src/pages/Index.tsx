@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, FileText } from "lucide-react";
 import { usePDFExport } from "@/hooks/usePDFExport";
 import Page01Hero from "@/components/pages/Page01Hero";
 import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
@@ -29,15 +28,19 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* PDF Export Button */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
         <Button
           onClick={exportToPDF}
-          className="bg-primary hover:bg-primary/90 text-white shadow-lg"
+          className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-500/80 hover:to-red-500/80 text-white shadow-lg pulse-glow"
           size="lg"
         >
           <Download className="w-4 h-4 mr-2" />
-          PDF로 저장
+          PDF로 저장 (상세내용 포함)
         </Button>
+        <div className="bg-black/20 backdrop-blur-sm p-2 rounded-lg border border-orange-500/20 text-white text-sm">
+          <FileText className="w-4 h-4 inline mr-1" />
+          20페이지
+        </div>
       </div>
 
       {/* Main Content */}

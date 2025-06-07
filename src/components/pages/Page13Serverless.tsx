@@ -46,7 +46,7 @@ const Page13Serverless = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-purple-900/30 bg-circuit-pattern relative overflow-hidden"
+      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-purple-900/30 bg-mesh-gradient relative overflow-hidden"
     >
       {/* 배경 요소들 */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5" />
