@@ -14,7 +14,7 @@ export const usePDFExport = () => {
       if (sections.length === 0) return;
 
       const pdf = new jsPDF({
-        orientation: 'portrait',
+        orientation: 'landscape', // 가로 방향으로 변경
         unit: 'mm',
         format: 'a4',
       });
@@ -34,14 +34,14 @@ export const usePDFExport = () => {
           height: section.scrollHeight,
           useCORS: true,
           scale: 0.8,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#1a1a1a' // 검정 배경으로 변경
         });
 
         const imgData = canvas.toDataURL('image/png');
         const imgWidth = canvas.width;
         const imgHeight = canvas.height;
         
-        // PDF 크기에 맞게 비율 계산
+        // PDF 크기에 맞게 비율 계산 (가로 방향에 맞게 조정)
         const ratio = Math.min(pdfWidth / (imgWidth * 0.264583), pdfHeight / (imgHeight * 0.264583));
         const scaledWidth = imgWidth * 0.264583 * ratio;
         const scaledHeight = imgHeight * 0.264583 * ratio;
