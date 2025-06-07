@@ -307,3 +307,17 @@
     @apply p-4 bg-yellow-900/20 rounded-xl border border-yellow-500/30;
   }
 }
+
+/* src/index.css에 추가 */
+html,
+body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

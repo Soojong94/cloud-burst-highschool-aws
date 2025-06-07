@@ -1,5 +1,5 @@
 // src/pages/Index.tsx 수정
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -70,28 +70,30 @@ const Index = () => {
     setCurrentPage(pageIndex);
   };
 
-  return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* 상단 네비게이션 */}
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/30 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => goToPage(0)}
-            className="text-white/80 hover:text-white"
-          >
-            <Home className="w-4 h-4" />
-          </Button>
-          <span className="text-white/90 text-sm font-medium">
-            {currentPage + 1} / {pages.length}
-          </span>
-          <span className="text-white/70 text-xs">
-            {pages[currentPage].title}
-          </span>
-        </div>
-      </div>
+  // 키보드 이벤트 처리
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextPage();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevPage();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToPage(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goToPage(pages.length - 1);
+      }
+    };
 
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentPage]);
+
+  return (
+    <div className="w-screen h-screen overflow-hidden relative">
       {/* 좌측 페이지 인덱스 */}
       <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 bg-black/20 backdrop-blur-sm rounded-full p-3 border border-white/10">
         <div className="flex flex-col gap-1 max-h-[60vh] overflow-y-auto">
@@ -109,6 +111,26 @@ const Index = () => {
         </div>
       </div>
 
+      {/* 우측 상단 페이지 정보 */}
+      <div className="fixed top-4 right-4 z-50 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => goToPage(0)}
+            className="text-white/80 hover:text-white p-1"
+          >
+            <Home className="w-4 h-4" />
+          </Button>
+          <span className="text-white/90 text-sm font-medium">
+            {currentPage + 1} / {pages.length}
+          </span>
+          <span className="text-white/70 text-xs">
+            {pages[currentPage].title}
+          </span>
+        </div>
+      </div>
+
       {/* 메인 콘텐츠 */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -117,7 +139,7 @@ const Index = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="w-full h-screen"
+          className="w-full h-full"
         >
           <CurrentPageComponent />
         </motion.div>
@@ -152,31 +174,10 @@ const Index = () => {
         </div>
       </div>
 
-      {/* 키보드 네비게이션 */}
+      {/* 키보드 안내 */}
       <div className="fixed bottom-4 right-4 z-40 text-white/50 text-xs bg-black/20 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/10">
-        ← → 키로도 이동 가능
+        ← → 키로 이동 가능
       </div>
-
-      {/* 키보드 이벤트 리스너 */}
-      <div
-        className="fixed inset-0 z-0"
-        onKeyDown={(e) => {
-          if (e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            nextPage();
-          } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            prevPage();
-          } else if (e.key === 'Home') {
-            e.preventDefault();
-            goToPage(0);
-          } else if (e.key === 'End') {
-            e.preventDefault();
-            goToPage(pages.length - 1);
-          }
-        }}
-        tabIndex={0}
-      />
     </div>
   );
 };
