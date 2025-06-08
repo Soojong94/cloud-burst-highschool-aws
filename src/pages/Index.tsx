@@ -1,4 +1,4 @@
-// src/pages/Index.tsx 업데이트된 전체 파일
+// src/pages/Index.tsx
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
@@ -6,47 +6,48 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // 모든 페이지 컴포넌트 import
 import Page01Hero from "@/components/pages/Page01Hero";
+import Page01Introduction from "@/components/pages/Page01Introduction";
+import Page01CSPvsMSP from "@/components/pages/Page01CSPvsMSP";
 import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
-import Page02CloudIntroDetail from "@/components/pages/Page02CloudModels";
+import Page02CloudModels from "@/components/pages/Page02CloudModels";
 import Page03AmazonStory from "@/components/pages/Page03AmazonStory";
+import Page03AmazonTimeline from "@/components/pages/Page03AmazonTimeline";
 import Page03Detail from "@/components/pages/Page03Detail";
 import Page04AWSServices from "@/components/pages/Page04AWSServices";
+import Page04AWSCategories from "@/components/pages/Page04AWSCategories";
 import Page05EC2 from "@/components/pages/Page05EC2";
 import Page05EC2Detail1 from "@/components/pages/Page05EC2Detail1";
 import Page05EC2Detail2 from "@/components/pages/Page05EC2Detail2";
 import Page05EC2Detail3 from "@/components/pages/Page05EC2Detail3";
 import Page06S3 from "@/components/pages/Page06S3";
-import Page07Database from "@/components/pages/Page07Database";
-import Page08Network from "@/components/pages/Page08Network";
-import Page09Security from "@/components/pages/Page09Security";
-import Page10AIML from "@/components/pages/Page10AIML";
-import Page11Lambda from "@/components/pages/Page11Lambda";
-import Page12ECS from "@/components/pages/Page12ECS";
-import Page13Serverless from "@/components/pages/Page13Serverless";
-import Page14DevOps from "@/components/pages/Page14DevOps";
-import Page15Analytics from "@/components/pages/Page15Analytics";
-import Page16IoT from "@/components/pages/Page16IoT";
-import Page17Mobile from "@/components/pages/Page17Mobile";
-import Page18GameDev from "@/components/pages/Page18GameDev";
-import Page19Careers from "@/components/pages/Page19Careers";
-import Page20Future from "@/components/pages/Page20Future";
-import Page02CloudModels from '@/components/pages/Page02CloudModels';
-import Page03AmazonTimeline from "@/components/pages/Page03AmazonTimeline";
-import Page04AWSCategories from "@/components/pages/Page04AWSCategories";
 import Page06S3Detail from "@/components/pages/Page06S3Detail";
+import Page07Database from "@/components/pages/Page07Database";
 import Page07DatabaseDetail from "@/components/pages/Page07DatabaseDetail";
+import Page08Network from "@/components/pages/Page08Network";
 import Page08NetworkDetail from "@/components/pages/Page08NetworkDetail";
+import Page09Security from "@/components/pages/Page09Security";
 import Page09SecurityDetail from "@/components/pages/Page09SecurityDetail";
+import Page10AIML from "@/components/pages/Page10AIML";
 import Page10AIMLDetail from "@/components/pages/Page10AIMLDetail";
+import Page11Lambda from "@/components/pages/Page11Lambda";
 import Page11LambdaDetail from "@/components/pages/Page11LambdaDetail";
+import Page12ECS from "@/components/pages/Page12ECS";
 import Page12ECSDetail from "@/components/pages/Page12ECSDetail";
+import Page13Serverless from "@/components/pages/Page13Serverless";
 import Page13ServerlessDetail from "@/components/pages/Page13ServerlessDetail";
+import Page14DevOps from "@/components/pages/Page14DevOps";
 import Page14DevOpsDetail from "@/components/pages/Page14DevOpsDetail";
+import Page15Analytics from "@/components/pages/Page15Analytics";
 import Page15AnalyticsDetail from "@/components/pages/Page15AnalyticsDetail";
+import Page16IoT from "@/components/pages/Page16IoT";
 import Page16IoTDetail from "@/components/pages/Page16IoTDetail";
+import Page17Mobile from "@/components/pages/Page17Mobile";
 import Page17MobileDetail from "@/components/pages/Page17MobileDetail";
+import Page18GameDev from "@/components/pages/Page18GameDev";
 import Page18GameDevDetail from "@/components/pages/Page18GameDevDetail";
+import Page19Careers from "@/components/pages/Page19Careers";
 import Page19CareersDetail from "@/components/pages/Page19CareersDetail";
+import Page20Future from "@/components/pages/Page20Future";
 import Page20FutureDetail from "@/components/pages/Page20FutureDetail";
 
 const Index = () => {
@@ -54,10 +55,13 @@ const Index = () => {
 
   const pages = [
     { component: Page01Hero, title: "AWS 소개" },
+    { component: Page01Introduction, title: "강사 소개" },
+    { component: Page01CSPvsMSP, title: "CSP vs MSP" },
     { component: Page02CloudIntro, title: "클라우드 컴퓨팅" },
     { component: Page02CloudModels, title: "클라우드 서비스 모델" },
     { component: Page03AmazonStory, title: "Amazon 스토리" },
     { component: Page03AmazonTimeline, title: "Amazon 타임라인" },
+    { component: Page03Detail, title: "Amazon 상세 가이드" },
     { component: Page04AWSServices, title: "AWS 핵심 서비스" },
     { component: Page04AWSCategories, title: "AWS 서비스 카테고리" },
     { component: Page05EC2, title: "EC2" },
@@ -138,8 +142,6 @@ const Index = () => {
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
-
-
       {/* 우측 상단 페이지 정보 */}
       <div className="fixed top-4 right-4 z-50 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
         <div className="flex items-center gap-3">
@@ -173,8 +175,6 @@ const Index = () => {
           <CurrentPageComponent />
         </motion.div>
       </AnimatePresence>
-
-
     </div>
   );
 };

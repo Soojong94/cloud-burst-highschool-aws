@@ -90,22 +90,7 @@ const Page20Future = () => {
           ))}
         </div>
 
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/20"
-        >
-          <h3 className="text-3xl font-bold mb-6 text-gradient-orange title-section">AWS와 함께하는 여러분의 여정</h3>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            클라우드 기술은 계속 발전하고 있습니다.
-            AWS와 함께 미래를 준비하고, 여러분의 아이디어를 현실로 만들어보세요.
-          </p>
-          <Button size="lg" className="text-lg px-12 py-4 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-500/80 hover:to-pink-500/80 pulse-glow">
-            지금 시작하기
-          </Button>
-        </motion.div>
+
       </div>
     </motion.section>
   );
