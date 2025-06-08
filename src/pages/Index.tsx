@@ -104,22 +104,7 @@ const Index = () => {
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
-      {/* 좌측 페이지 인덱스 */}
-      <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 bg-black/20 backdrop-blur-sm rounded-full p-3 border border-white/10">
-        <div className="flex flex-col gap-1 max-h-[60vh] overflow-y-auto">
-          {pages.map((page, index) => (
-            <button
-              key={index}
-              onClick={() => goToPage(index)}
-              className={`w-2 h-6 rounded-full transition-all duration-300 ${index === currentPage
-                ? 'bg-primary shadow-lg shadow-primary/50'
-                : 'bg-white/20 hover:bg-white/40'
-                }`}
-              title={`${index + 1}. ${page.title}`}
-            />
-          ))}
-        </div>
-      </div>
+
 
       {/* 우측 상단 페이지 정보 */}
       <div className="fixed top-4 right-4 z-50 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
@@ -155,39 +140,7 @@ const Index = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* 하단 네비게이션 버튼 */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="flex items-center gap-4 bg-black/30 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
-          <Button
-            onClick={prevPage}
-            disabled={currentPage === 0}
-            variant="ghost"
-            size="sm"
-            className="text-white/80 hover:text-white disabled:opacity-30"
-          >
-            <ChevronLeft className="w-5 h-5 mr-1" />
-            이전
-          </Button>
 
-          <div className="w-px h-6 bg-white/20" />
-
-          <Button
-            onClick={nextPage}
-            disabled={currentPage === pages.length - 1}
-            variant="ghost"
-            size="sm"
-            className="text-white/80 hover:text-white disabled:opacity-30"
-          >
-            다음
-            <ChevronRight className="w-5 h-5 ml-1" />
-          </Button>
-        </div>
-      </div>
-
-      {/* 키보드 안내 */}
-      <div className="fixed bottom-4 right-4 z-40 text-white/50 text-xs bg-black/20 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/10">
-        ← → 키로 이동 가능
-      </div>
     </div>
   );
 };
