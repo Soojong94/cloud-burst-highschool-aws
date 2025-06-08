@@ -1,4 +1,4 @@
-// src/pages/Index.tsx 수정
+// src/pages/Index.tsx 업데이트된 전체 파일
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
@@ -7,9 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 // 모든 페이지 컴포넌트 import
 import Page01Hero from "@/components/pages/Page01Hero";
 import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
+import Page02CloudIntroDetail from "@/components/pages/Page02CloudIntroDetail";
 import Page03AmazonStory from "@/components/pages/Page03AmazonStory";
+import Page03Detail from "@/components/pages/Page03Detail";
 import Page04AWSServices from "@/components/pages/Page04AWSServices";
 import Page05EC2 from "@/components/pages/Page05EC2";
+import Page05EC2Detail1 from "@/components/pages/Page05EC2Detail1";
+import Page05EC2Detail2 from "@/components/pages/Page05EC2Detail2";
+import Page05EC2Detail3 from "@/components/pages/Page05EC2Detail3";
 import Page06S3 from "@/components/pages/Page06S3";
 import Page07Database from "@/components/pages/Page07Database";
 import Page08Network from "@/components/pages/Page08Network";
@@ -32,9 +37,14 @@ const Index = () => {
   const pages = [
     { component: Page01Hero, title: "AWS 소개" },
     { component: Page02CloudIntro, title: "클라우드 컴퓨팅" },
+    { component: Page02CloudIntroDetail, title: "클라우드 컴퓨팅 상세" },
     { component: Page03AmazonStory, title: "Amazon 스토리" },
+    { component: Page03Detail, title: "Amazon 스토리 상세" },
     { component: Page04AWSServices, title: "AWS 서비스" },
     { component: Page05EC2, title: "EC2" },
+    { component: Page05EC2Detail1, title: "EC2 개요" },
+    { component: Page05EC2Detail2, title: "EC2 인스턴스 패밀리" },
+    { component: Page05EC2Detail3, title: "EC2 요금 모델" },
     { component: Page06S3, title: "S3" },
     { component: Page07Database, title: "데이터베이스" },
     { component: Page08Network, title: "네트워킹" },
@@ -101,9 +111,9 @@ const Index = () => {
             <button
               key={index}
               onClick={() => goToPage(index)}
-              className={`w-2 h-8 rounded-full transition-all duration-300 ${index === currentPage
-                  ? 'bg-primary shadow-lg shadow-primary/50'
-                  : 'bg-white/20 hover:bg-white/40'
+              className={`w-2 h-6 rounded-full transition-all duration-300 ${index === currentPage
+                ? 'bg-primary shadow-lg shadow-primary/50'
+                : 'bg-white/20 hover:bg-white/40'
                 }`}
               title={`${index + 1}. ${page.title}`}
             />

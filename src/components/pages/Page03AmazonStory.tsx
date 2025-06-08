@@ -1,8 +1,8 @@
+// src/components/pages/Page03AmazonStory.tsx (기존 페이지는 간소화)
 import { motion } from "framer-motion";
 import { Building, TrendingUp, Users, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const Page03AmazonStory = () => {
   return (
@@ -107,60 +107,9 @@ const Page03AmazonStory = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-500/80 hover:to-red-500/80 pulse-glow">
-                자세히 보기
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-gradient-to-br from-card to-background border-orange-500/30">
-              <DialogHeader>
-                <DialogTitle className="text-2xl text-gradient-orange">Amazon의 상세한 성장 스토리</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-6">
-                <div className="dialog-section-orange">
-                  <h3 className="text-xl font-semibold mb-3 text-orange-400">1994-1997: 온라인 서점의 탄생</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Jeff Bezos는 인터넷 사용량이 연간 2300% 증가한다는 통계를 보고 온라인 비즈니스의 가능성을 확신했습니다.
-                    시애틀의 차고에서 시작된 Amazon.com은 처음에는 책만 판매했지만, 곧 "지구상의 모든 것을 파는 상점"이라는
-                    비전을 세웠습니다. 1997년 주식 상장 당시 주가는 18달러였습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-red">
-                  <h3 className="text-xl font-semibold mb-3 text-red-400">1998-2002: 카테고리 확장과 도전</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Amazon은 음악, DVD, 전자제품, 장난감 등으로 카테고리를 확장했습니다.
-                    닷컴 버블 붕괴로 주가가 94% 하락하는 위기를 겪었지만, 고객 중심 철학과 장기적 비전을 유지했습니다.
-                    이 시기에 "Customer Obsession"이라는 핵심 가치가 확립되었습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-blue">
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">2003-2006: AWS의 기반 구축</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Amazon의 급속한 성장으로 인해 확장 가능한 인프라가 필요해졌습니다.
-                    내부적으로 개발한 분산 컴퓨팅 인프라가 매우 효율적이라는 것을 깨달은 Amazon은
-                    이를 외부에 서비스로 제공하기로 결정했습니다. 2006년 AWS가 공식 출시되었습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-green">
-                  <h3 className="text-xl font-semibold mb-3 text-green-400">2007-2015: 클라우드 혁명의 선도</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    AWS는 클라우드 컴퓨팅 시장을 창조하고 선도했습니다. EC2, S3 등 핵심 서비스들이
-                    스타트업부터 대기업까지 모든 규모의 회사들에게 채택되었습니다.
-                    Netflix, Airbnb, Uber 같은 혁신적인 회사들이 AWS 위에서 성장했습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-purple">
-                  <h3 className="text-xl font-semibold mb-3 text-purple-400">2016-현재: AI와 ML의 대중화</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Amazon은 Alexa를 통해 AI를 일상에 도입했고, AWS를 통해 기업용 AI/ML 서비스를 제공하기 시작했습니다.
-                    SageMaker, Rekognition, Comprehend 등의 서비스로 AI 기술의 민주화를 이끌고 있습니다.
-                    현재 AWS는 전 세계 클라우드 시장 점유율 1위를 유지하고 있습니다.
-                  </p>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
+          <p className="text-lg text-muted-foreground mb-6">
+            다음 페이지에서 Amazon의 상세한 성장 과정을 확인하세요
+          </p>
         </motion.div>
       </div>
     </motion.section>
