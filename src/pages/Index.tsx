@@ -53,6 +53,7 @@ import Page19Careers from "@/components/pages/Page19Careers";
 import Page19CareersDetail from "@/components/pages/Page19CareersDetail";
 import Page20Future from "@/components/pages/Page20Future";
 import Page20FutureDetail from "@/components/pages/Page20FutureDetail";
+import Page21Resources from "@/components/pages/Page21Resources";
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -105,7 +106,8 @@ const Index = () => {
     { component: Page19Careers, title: "직업" },
     { component: Page19CareersDetail, title: "커리어 로드맵" },
     { component: Page20Future, title: "미래" },
-    { component: Page20FutureDetail, title: "클라우드의 미래" }
+    { component: Page20FutureDetail, title: "클라우드의 미래" },
+    { component: Page21Resources, title: "바로 시작하기" }
   ];
 
   const CurrentPageComponent = pages[currentPage].component;
