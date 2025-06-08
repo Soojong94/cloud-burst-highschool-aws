@@ -1,9 +1,6 @@
-
 import { motion } from "framer-motion";
-import { Cpu, Zap, Shield, DollarSign } from "lucide-react";
+import { Cpu, Zap, Shield, DollarSign, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const Page05EC2 = () => {
   const features = [
@@ -11,25 +8,29 @@ const Page05EC2 = () => {
       icon: Cpu,
       title: "확장성",
       description: "몇 분 만에 수천 개의 인스턴스 시작 가능",
-      color: "text-blue-400"
+      color: "text-blue-400",
+      cardStyle: "card-tech"
     },
     {
       icon: Zap,
       title: "성능",
       description: "다양한 인스턴스 유형으로 최적화된 성능",
-      color: "text-yellow-400"
+      color: "text-yellow-400",
+      cardStyle: "card-neon"
     },
     {
       icon: Shield,
       title: "보안",
       description: "VPC와 보안 그룹으로 네트워크 보안 제어",
-      color: "text-green-400"
+      color: "text-green-400",
+      cardStyle: "card-data"
     },
     {
       icon: DollarSign,
       title: "비용 효율성",
       description: "사용한 만큼만 지불하는 유연한 요금제",
-      color: "text-emerald-400"
+      color: "text-emerald-400",
+      cardStyle: "card-ai"
     }
   ];
 
@@ -39,9 +40,14 @@ const Page05EC2 = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-gradient-to-br from-background to-muted/30"
+      className="h-screen flex items-center justify-center bg-gradient-to-br from-background via-slate-900 to-blue-900/30 bg-pattern-dots relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* 배경 요소들 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-green-500/5" />
+      <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl float-animation" />
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-green-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+
+      <div className="container mx-auto px-8 relative z-10">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -49,13 +55,19 @@ const Page05EC2 = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-blue">EC2 (Elastic Compute Cloud)</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            클라우드에서 안전하고 크기 조정이 가능한 컴퓨팅 용량을 제공하는 가상 서버 서비스입니다.
+          <div className="relative mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-blue title-main title-section">
+              EC2 (Elastic Compute Cloud)
+            </h2>
+            <Sparkles className="w-8 h-8 absolute top-0 right-1/4 text-blue-400 animate-pulse" />
+            <Sparkles className="w-6 h-6 absolute bottom-0 left-1/4 text-green-400 animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/20">
+            클라우드에서 안전하고 크기 조정이 가능한 컴퓨팅 용량을 제공하는 가상 서버 서비스
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -64,7 +76,7 @@ const Page05EC2 = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full bg-gradient-card hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 border-primary/30">
+              <Card className={`h-full ${feature.cardStyle} hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105`}>
                 <CardHeader className="text-center">
                   <feature.icon className={`w-12 h-12 mx-auto ${feature.color} mb-4 drop-shadow-lg`} />
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -76,50 +88,6 @@ const Page05EC2 = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-primary to-blue-500 hover:from-primary/80 hover:to-blue-500/80">
-                EC2 상세 정보
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-gradient-to-br from-card to-background border-primary/30">
-              <DialogHeader>
-                <DialogTitle className="text-2xl text-gradient-purple">EC2 완전 가이드</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-6">
-                <div className="p-4 bg-blue-900/20 rounded-xl border border-blue-500/30">
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">인스턴스 유형</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    t2.micro부터 고성능 GPU 인스턴스까지, 다양한 워크로드에 최적화된 인스턴스를 제공합니다.
-                    범용, 컴퓨팅 최적화, 메모리 최적화, 스토리지 최적화, 가속 컴퓨팅 등 5가지 카테고리로 분류됩니다.
-                  </p>
-                </div>
-                <div className="p-4 bg-green-900/20 rounded-xl border border-green-500/30">
-                  <h3 className="text-xl font-semibold mb-3 text-green-400">요금 모델</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    온디맨드, 예약 인스턴스, 스팟 인스턴스, 전용 호스트 등 다양한 요금 모델을 통해
-                    비용을 최적화할 수 있습니다. 워크로드의 특성에 따라 최대 90%까지 비용을 절약할 수 있습니다.
-                  </p>
-                </div>
-                <div className="p-4 bg-purple-900/20 rounded-xl border border-purple-500/30">
-                  <h3 className="text-xl font-semibold mb-3 text-purple-400">보안 기능</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    보안 그룹, VPC, IAM 역할, 키 페어 등을 통해 강력한 보안을 제공합니다.
-                    또한 AWS Systems Manager를 통해 패치 관리와 구성 관리를 자동화할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-        </motion.div>
       </div>
     </motion.section>
   );

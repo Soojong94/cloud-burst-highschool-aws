@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { BarChart3, Database, Zap, Search, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const Page15Analytics = () => {
   const services = [
@@ -46,14 +44,14 @@ const Page15Analytics = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="min-h-screen py-20 bg-gradient-to-br from-background via-slate-900 to-red-900/30 bg-tech-pattern relative overflow-hidden"
+      className="h-screen flex items-center justify-center bg-gradient-to-br from-background via-slate-900 to-red-900/30 bg-tech-pattern relative overflow-hidden"
     >
       {/* 배경 요소들 */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-transparent to-yellow-500/5" />
       <div className="absolute top-20 right-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl float-animation" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-8 relative z-10">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -62,18 +60,18 @@ const Page15Analytics = () => {
           className="text-center mb-16"
         >
           <div className="relative mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-orange title-main title-section">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-orange title-main title-section">
               분석 및 빅데이터
             </h2>
             <Sparkles className="w-8 h-8 absolute top-0 right-1/3 text-red-400 animate-pulse" />
             <Sparkles className="w-6 h-6 absolute bottom-0 left-1/3 text-yellow-400 animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-red-500/20">
-            대용량 데이터를 수집, 저장, 처리, 분석할 수 있는 완전 관리형 서비스들입니다.
+            대용량 데이터를 수집, 저장, 처리, 분석할 수 있는 완전 관리형 서비스들
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -95,50 +93,6 @@ const Page15Analytics = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-500/80 hover:to-yellow-500/80 pulse-glow">
-                데이터 분석 아키텍처
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-gradient-to-br from-card to-background border-red-500/30">
-              <DialogHeader>
-                <DialogTitle className="text-2xl text-gradient-orange">AWS 분석 서비스 가이드</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-6">
-                <div className="dialog-section-blue">
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">데이터 레이크 아키텍처</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    S3를 중심으로 한 데이터 레이크를 구축하고, Glue로 ETL 작업을 수행하며,
-                    Athena로 서버리스 쿼리를 실행할 수 있습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-yellow">
-                  <h3 className="text-xl font-semibold mb-3 text-yellow-400">실시간 분석</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Kinesis를 통해 실시간 데이터 스트림을 처리하고,
-                    Lambda나 Kinesis Analytics로 실시간 분석을 수행할 수 있습니다.
-                  </p>
-                </div>
-                <div className="dialog-section-red">
-                  <h3 className="text-xl font-semibold mb-3 text-red-400">기업용 데이터 웨어하우스</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Redshift를 사용하여 페타바이트 규모의 데이터 웨어하우스를 구축하고,
-                    QuickSight로 비즈니스 인텔리전스를 구현할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-        </motion.div>
       </div>
     </motion.section>
   );

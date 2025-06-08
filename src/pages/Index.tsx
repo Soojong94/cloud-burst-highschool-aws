@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // 모든 페이지 컴포넌트 import
 import Page01Hero from "@/components/pages/Page01Hero";
 import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
-import Page02CloudIntroDetail from "@/components/pages/Page02CloudIntroDetail";
+import Page02CloudIntroDetail from "@/components/pages/Page02CloudModels";
 import Page03AmazonStory from "@/components/pages/Page03AmazonStory";
 import Page03Detail from "@/components/pages/Page03Detail";
 import Page04AWSServices from "@/components/pages/Page04AWSServices";
@@ -30,6 +30,24 @@ import Page17Mobile from "@/components/pages/Page17Mobile";
 import Page18GameDev from "@/components/pages/Page18GameDev";
 import Page19Careers from "@/components/pages/Page19Careers";
 import Page20Future from "@/components/pages/Page20Future";
+import Page02CloudModels from '@/components/pages/Page02CloudModels';
+import Page03AmazonTimeline from "@/components/pages/Page03AmazonTimeline";
+import Page04AWSCategories from "@/components/pages/Page04AWSCategories";
+import Page06S3Detail from "@/components/pages/Page06S3Detail";
+import Page07DatabaseDetail from "@/components/pages/Page07DatabaseDetail";
+import Page08NetworkDetail from "@/components/pages/Page08NetworkDetail";
+import Page09SecurityDetail from "@/components/pages/Page09SecurityDetail";
+import Page10AIMLDetail from "@/components/pages/Page10AIMLDetail";
+import Page11LambdaDetail from "@/components/pages/Page11LambdaDetail";
+import Page12ECSDetail from "@/components/pages/Page12ECSDetail";
+import Page13ServerlessDetail from "@/components/pages/Page13ServerlessDetail";
+import Page14DevOpsDetail from "@/components/pages/Page14DevOpsDetail";
+import Page15AnalyticsDetail from "@/components/pages/Page15AnalyticsDetail";
+import Page16IoTDetail from "@/components/pages/Page16IoTDetail";
+import Page17MobileDetail from "@/components/pages/Page17MobileDetail";
+import Page18GameDevDetail from "@/components/pages/Page18GameDevDetail";
+import Page19CareersDetail from "@/components/pages/Page19CareersDetail";
+import Page20FutureDetail from "@/components/pages/Page20FutureDetail";
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -37,29 +55,45 @@ const Index = () => {
   const pages = [
     { component: Page01Hero, title: "AWS 소개" },
     { component: Page02CloudIntro, title: "클라우드 컴퓨팅" },
-    { component: Page02CloudIntroDetail, title: "클라우드 컴퓨팅 상세" },
+    { component: Page02CloudModels, title: "클라우드 서비스 모델" },
     { component: Page03AmazonStory, title: "Amazon 스토리" },
-    { component: Page03Detail, title: "Amazon 스토리 상세" },
-    { component: Page04AWSServices, title: "AWS 서비스" },
+    { component: Page03AmazonTimeline, title: "Amazon 타임라인" },
+    { component: Page04AWSServices, title: "AWS 핵심 서비스" },
+    { component: Page04AWSCategories, title: "AWS 서비스 카테고리" },
     { component: Page05EC2, title: "EC2" },
     { component: Page05EC2Detail1, title: "EC2 개요" },
     { component: Page05EC2Detail2, title: "EC2 인스턴스 패밀리" },
     { component: Page05EC2Detail3, title: "EC2 요금 모델" },
     { component: Page06S3, title: "S3" },
+    { component: Page06S3Detail, title: "S3 스토리지 클래스" },
     { component: Page07Database, title: "데이터베이스" },
+    { component: Page07DatabaseDetail, title: "데이터베이스 선택 가이드" },
     { component: Page08Network, title: "네트워킹" },
+    { component: Page08NetworkDetail, title: "네트워킹 아키텍처" },
     { component: Page09Security, title: "보안" },
+    { component: Page09SecurityDetail, title: "보안 상세 가이드" },
     { component: Page10AIML, title: "AI/ML" },
+    { component: Page10AIMLDetail, title: "AI/ML 서비스 가이드" },
     { component: Page11Lambda, title: "Lambda" },
+    { component: Page11LambdaDetail, title: "Lambda 활용 사례" },
     { component: Page12ECS, title: "ECS/EKS" },
+    { component: Page12ECSDetail, title: "컨테이너 서비스 가이드" },
     { component: Page13Serverless, title: "서버리스" },
+    { component: Page13ServerlessDetail, title: "서버리스 아키텍처" },
     { component: Page14DevOps, title: "DevOps" },
+    { component: Page14DevOpsDetail, title: "DevOps 모범 사례" },
     { component: Page15Analytics, title: "분석" },
+    { component: Page15AnalyticsDetail, title: "데이터 분석 아키텍처" },
     { component: Page16IoT, title: "IoT" },
+    { component: Page16IoTDetail, title: "IoT 솔루션 가이드" },
     { component: Page17Mobile, title: "모바일" },
+    { component: Page17MobileDetail, title: "모바일 앱 개발 가이드" },
     { component: Page18GameDev, title: "게임 개발" },
+    { component: Page18GameDevDetail, title: "게임 개발 아키텍처" },
     { component: Page19Careers, title: "직업" },
-    { component: Page20Future, title: "미래" }
+    { component: Page19CareersDetail, title: "커리어 로드맵" },
+    { component: Page20Future, title: "미래" },
+    { component: Page20FutureDetail, title: "클라우드의 미래" }
   ];
 
   const CurrentPageComponent = pages[currentPage].component;
