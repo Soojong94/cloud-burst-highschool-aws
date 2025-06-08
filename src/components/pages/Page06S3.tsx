@@ -55,7 +55,7 @@ const Page06S3 = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="relative mb-8">
+          <div className="relative mb-">
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-orange title-main title-section">
               S3 (Simple Storage Service)
             </h2>

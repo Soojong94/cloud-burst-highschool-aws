@@ -12,7 +12,11 @@ import Page02CloudIntro from "@/components/pages/Page02CloudIntro";
 import Page02CloudModels from "@/components/pages/Page02CloudModels";
 import Page03AmazonStory from "@/components/pages/Page03AmazonStory";
 import Page03AmazonTimeline from "@/components/pages/Page03AmazonTimeline";
-import Page03Detail from "@/components/pages/Page03Detail";
+import Page03Detail1 from "@/components/pages/Page03Detail1";
+import Page03Detail2 from "@/components/pages/Page03Detail2";
+import Page03Detail3 from "@/components/pages/Page03Detail3";
+import Page03Detail4 from "@/components/pages/Page03Detail4";
+import Page03Detail5 from "@/components/pages/Page03Detail5";
 import Page04AWSServices from "@/components/pages/Page04AWSServices";
 import Page04AWSCategories from "@/components/pages/Page04AWSCategories";
 import Page05EC2 from "@/components/pages/Page05EC2";
@@ -61,7 +65,11 @@ const Index = () => {
     { component: Page02CloudModels, title: "클라우드 서비스 모델" },
     { component: Page03AmazonStory, title: "Amazon 스토리" },
     { component: Page03AmazonTimeline, title: "Amazon 타임라인" },
-    { component: Page03Detail, title: "Amazon 상세 가이드" },
+    { component: Page03Detail1, title: "1994-1997: 온라인 서점의 탄생" },
+    { component: Page03Detail2, title: "1998-2002: 카테고리 확장과 도전" },
+    { component: Page03Detail3, title: "2003-2006: AWS의 기반 구축" },
+    { component: Page03Detail4, title: "2007-2015: 클라우드 혁명의 선도" },
+    { component: Page03Detail5, title: "2016-현재: AI와 ML의 대중화" },
     { component: Page04AWSServices, title: "AWS 핵심 서비스" },
     { component: Page04AWSCategories, title: "AWS 서비스 카테고리" },
     { component: Page05EC2, title: "EC2" },
@@ -156,10 +164,32 @@ const Index = () => {
           <span className="text-white/90 text-sm font-medium">
             {currentPage + 1} / {pages.length}
           </span>
-          <span className="text-white/70 text-xs">
+          <span className="text-white/70 text-xs max-w-48 truncate">
             {pages[currentPage].title}
           </span>
         </div>
+      </div>
+
+      {/* 좌측 하단 네비게이션 버튼들 */}
+      <div className="fixed bottom-4 left-4 z-50 flex gap-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={prevPage}
+          disabled={currentPage === 0}
+          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={nextPage}
+          disabled={currentPage === pages.length - 1}
+          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </Button>
       </div>
 
       {/* 메인 콘텐츠 */}
@@ -179,4 +209,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Index; 
