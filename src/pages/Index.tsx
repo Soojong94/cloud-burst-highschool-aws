@@ -1,4 +1,3 @@
-// src/pages/Index.tsx
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
@@ -112,20 +111,33 @@ const Index = () => {
 
   const CurrentPageComponent = pages[currentPage].component;
 
+  // 모바일에서 페이지 변경시 맨 위로 스크롤
+  const scrollToTop = () => {
+    if (window.innerWidth <= 768) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const nextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
+      scrollToTop();
     }
   };
 
   const prevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
+      scrollToTop();
     }
   };
 
   const goToPage = (pageIndex: number) => {
     setCurrentPage(pageIndex);
+    scrollToTop();
   };
 
   // 키보드 이벤트 처리
@@ -150,47 +162,93 @@ const Index = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentPage]);
 
+  // 터치 스와이프 처리 (모바일용)
+  useEffect(() => {
+    let startX = 0;
+    let startY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!startX || !startY) return;
+
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+
+      const deltaX = startX - endX;
+      const deltaY = startY - endY;
+
+      // 수직 스크롤이 아닌 수평 스와이프인 경우에만 페이지 전환
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          nextPage(); // 왼쪽으로 스와이프 = 다음 페이지
+        } else {
+          prevPage(); // 오른쪽으로 스와이프 = 이전 페이지
+        }
+      }
+
+      startX = 0;
+      startY = 0;
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentPage]);
+
+  // 페이지 변경 시 스크롤 위치 초기화
+  useEffect(() => {
+    scrollToTop();
+  }, [currentPage]);
+
   return (
-    <div className="w-screen h-screen overflow-hidden relative">
+    <div className="w-full min-h-screen relative md:w-screen md:h-screen md:overflow-hidden">
       {/* 우측 상단 페이지 정보 */}
-      <div className="fixed top-4 right-4 z-50 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-        <div className="flex items-center gap-3">
+      <div className="fixed top-2 right-2 z-50 bg-black/30 backdrop-blur-md rounded-full px-3 py-1 border border-white/20 md:top-4 md:right-4 md:px-4 md:py-2">
+        <div className="flex items-center gap-2 md:gap-3">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => goToPage(0)}
-            className="text-white/80 hover:text-white p-1"
+            className="text-white/80 hover:text-white p-1 h-auto w-auto"
           >
-            <Home className="w-4 h-4" />
+            <Home className="w-3 h-3 md:w-4 md:h-4" />
           </Button>
-          <span className="text-white/90 text-sm font-medium">
+          <span className="text-white/90 text-xs md:text-sm font-medium">
             {currentPage + 1} / {pages.length}
           </span>
-          <span className="text-white/70 text-xs max-w-48 truncate">
+          <span className="text-white/70 text-xs max-w-32 md:max-w-48 truncate hidden sm:block">
             {pages[currentPage].title}
           </span>
         </div>
       </div>
 
       {/* 좌측 하단 네비게이션 버튼들 */}
-      <div className="fixed bottom-4 left-4 z-50 flex gap-2">
+      <div className="fixed bottom-2 left-2 z-50 flex gap-1 md:bottom-4 md:left-4 md:gap-2">
         <Button
           variant="ghost"
           size="sm"
           onClick={prevPage}
           disabled={currentPage === 0}
-          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50"
+          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50 h-8 w-8 p-0 md:h-auto md:w-auto md:p-2"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-3 h-3 md:w-4 md:h-4" />
         </Button>
         <Button
           variant="ghost"
           size="sm"
           onClick={nextPage}
           disabled={currentPage === pages.length - 1}
-          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50"
+          className="bg-black/30 backdrop-blur-md border border-white/20 text-white/80 hover:text-white disabled:opacity-50 h-8 w-8 p-0 md:h-auto md:w-auto md:p-2"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
         </Button>
       </div>
 
@@ -202,7 +260,7 @@ const Index = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="w-full h-full"
+          className="w-full"
         >
           <CurrentPageComponent />
         </motion.div>
@@ -211,4 +269,4 @@ const Index = () => {
   );
 };
 
-export default Index; 
+export default Index;

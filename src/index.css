@@ -95,6 +95,46 @@
   }
 }
 
+/* PC와 모바일 구분하여 overflow 처리 */
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* PC에서는 hidden, 모바일에서는 auto */
+@media (min-width: 769px) {
+
+  html,
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* 모바일에서는 스크롤 허용 */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
 /* 추가 색상 강조를 위한 사용자 정의 클래스 */
 @layer utilities {
   .text-gradient-blue {
@@ -111,6 +151,18 @@
 
   .text-gradient-orange {
     @apply bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-pink {
+    @apply bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent;
   }
 
   .bg-gradient-card {
@@ -308,16 +360,43 @@
   }
 }
 
-/* src/index.css에 추가 */
-html,
-body {
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+
+  /* 모바일에서 더 작은 폰트와 패딩 사용 */
+  .title-main {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* 카드 간격 조정 */
+  .grid {
+    gap: 1rem !important;
+  }
+
+  /* 버튼 크기 조정 */
+  .fixed .flex {
+    gap: 0.5rem;
+  }
 }
 
-#root {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+
+  .hover\:scale-105:active {
+    transform: scale(1.02);
+  }
+}
+
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
 }
