@@ -111,34 +111,50 @@ const Index = () => {
 
   const CurrentPageComponent = pages[currentPage].component;
 
-  // 모바일에서 페이지 변경시 맨 위로 스크롤
-  const scrollToTop = () => {
-    if (window.innerWidth <= 768) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
+  // 강제로 스크롤을 맨 위로 이동시키는 함수 (여러 방법 시도)
+  const forceScrollToTop = () => {
+    // 방법 1: 즉시 스크롤
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // 방법 2: window.scrollTo
+    window.scrollTo(0, 0);
+
+    // 방법 3: requestAnimationFrame으로 한 번 더
+    requestAnimationFrame(() => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+    });
   };
 
   const nextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
-      scrollToTop();
     }
   };
 
   const prevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
-      scrollToTop();
     }
   };
 
   const goToPage = (pageIndex: number) => {
     setCurrentPage(pageIndex);
-    scrollToTop();
   };
+
+  // 페이지 변경될 때마다 강제 스크롤
+  useEffect(() => {
+    forceScrollToTop();
+
+    // 추가로 약간의 지연 후에도 한 번 더 시도
+    const timeoutId = setTimeout(() => {
+      forceScrollToTop();
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [currentPage]);
 
   // 키보드 이벤트 처리
   useEffect(() => {
@@ -160,7 +176,7 @@ const Index = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage]);
+  }, [currentPage, pages.length]);
 
   // 터치 스와이프 처리 (모바일용)
   useEffect(() => {
@@ -194,18 +210,13 @@ const Index = () => {
       startY = 0;
     };
 
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentPage]);
-
-  // 페이지 변경 시 스크롤 위치 초기화
-  useEffect(() => {
-    scrollToTop();
   }, [currentPage]);
 
   return (
