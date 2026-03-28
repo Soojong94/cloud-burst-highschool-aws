@@ -2,6 +2,7 @@
 const {
   SLIDE_W, SLIDE_H, BG, TEXT, FONT, SIZE, LAYOUT,
 } = require('../theme');
+const { getIconDataUrl } = require('../icons');
 
 // 3A: 2열 대비형 (CSP vs MSP)
 function addM3CompareSlide(prs, data) {
@@ -108,12 +109,18 @@ function addM3ColumnsSlide(prs, data) {
       fill: { color: colColor.main, transparency: 75 },
       line: { color: colColor.main, transparency: 50, width: 0.75 },
     });
-    slide.addText(col.icon || '●', {
-      x: cx + (colW - iconSize) / 2, y: contentY + P + 0.02,
-      w: iconSize, h: iconSize - 0.04,
-      fontSize: 17, color: colColor.main,
-      fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
-    });
+    const colIconUrl = getIconDataUrl(col.icon, colColor.main);
+    if (colIconUrl) {
+      const pad = iconSize * 0.22;
+      slide.addImage({ data: colIconUrl, x: cx + (colW - iconSize) / 2 + pad, y: contentY + P + pad, w: iconSize - pad * 2, h: iconSize - pad * 2 });
+    } else {
+      slide.addText(col.icon || '●', {
+        x: cx + (colW - iconSize) / 2, y: contentY + P + 0.02,
+        w: iconSize, h: iconSize - 0.04,
+        fontSize: 17, color: colColor.main,
+        fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
+      });
+    }
 
     let curY = contentY + P + iconSize + 0.12;
 
@@ -239,10 +246,15 @@ function _drawBenefitGrid(slide, prs, benefits, color) {
       fill: { color: BG.surface, transparency: 55 },
       line: { color: color.main, transparency: 55, width: 0.5 }, rounding: true,
     });
-    slide.addText(item.icon || '✦', {
-      x: ix + 0.1, y: gridY + 0.06, w: 0.3, h: 0.3,
-      fontSize: 14, color: color.main, fontFace: 'Segoe UI Emoji', align: 'center',
-    });
+    const benefitIconUrl = getIconDataUrl(item.icon, color.main);
+    if (benefitIconUrl) {
+      slide.addImage({ data: benefitIconUrl, x: ix + 0.1, y: gridY + 0.06, w: 0.28, h: 0.28 });
+    } else {
+      slide.addText(item.icon || '✦', {
+        x: ix + 0.1, y: gridY + 0.06, w: 0.3, h: 0.3,
+        fontSize: 14, color: color.main, fontFace: 'Segoe UI Emoji', align: 'center',
+      });
+    }
     slide.addText(item.title || '', {
       x: ix + 0.42, y: gridY + 0.08, w: itemW - 0.5, h: 0.24,
       fontSize: 10, bold: true, color: TEXT.white, fontFace: FONT.main, align: 'left',

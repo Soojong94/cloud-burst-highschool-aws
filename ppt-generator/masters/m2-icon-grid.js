@@ -2,6 +2,7 @@
 const {
   SLIDE_W, SLIDE_H, BG, TEXT, FONT, SIZE, LAYOUT,
 } = require('../theme');
+const { getIconDataUrl } = require('../icons');
 
 function addM2Slide(prs, data) {
   const slide = prs.addSlide();
@@ -30,29 +31,34 @@ function addM2Slide(prs, data) {
   let headerBottom = 0.62;
   if (data.subtitle) {
     slide.addShape(prs.ShapeType.rect, {
-      x: M + 0.6, y: 0.64, w: SLIDE_W - M * 2 - 1.2, h: 0.3,
+      x: M + 0.6, y: 0.64, w: SLIDE_W - M * 2 - 1.2, h: 0.48,
       fill: { color: '000000', transparency: 68 },
       line: { color: color.main, transparency: 60, width: 0.5 }, rounding: true,
     });
     slide.addText(data.subtitle, {
-      x: M + 0.6, y: 0.65, w: SLIDE_W - M * 2 - 1.2, h: 0.28,
+      x: M + 0.6, y: 0.65, w: SLIDE_W - M * 2 - 1.2, h: 0.46,
       fontSize: SIZE.pageSubtitle, color: TEXT.muted,
-      fontFace: FONT.main, align: 'center',
+      fontFace: FONT.main, align: 'center', valign: 'middle',
+      wrap: true, shrinkText: true,
     });
-    headerBottom = 0.98;
+    headerBottom = 1.16;
   }
 
-  // ── 카드 그리드 — 남은 공간 전부 사용 ─────────────────
-  const gridY = headerBottom + 0.06;
-  const gridH = SLIDE_H - gridY - M * 0.5;
+  // ── 카드 그리드 — 세로 중앙 정렬 ─────────────────────
+  const availTop = headerBottom + 0.06;
+  const availH = SLIDE_H - availTop - M * 0.5;
   const cards = (data.cards || []).slice(0, 6);
 
   const cols = cards.length <= 4 ? Math.min(cards.length, 4) : 3;
   const rows = Math.ceil(cards.length / cols);
   const cardGap = LAYOUT.cardGap;
-  const rowGap = rows > 1 ? 0.12 : 0;
+  const rowGap = rows > 1 ? 0.14 : 0;
   const cardW = (SLIDE_W - M * 2 - cardGap * (cols - 1)) / cols;
-  const cardH = (gridH - rowGap * (rows - 1)) / rows;
+  // 카드 높이: 최대 2.5" 제한 후 남는 공간에서 세로 중앙 정렬
+  const rawCardH = (availH - rowGap * (rows - 1)) / rows;
+  const cardH = rows === 1 ? Math.min(rawCardH, 2.5) : Math.min(rawCardH, 2.1);
+  const totalGridH = cardH * rows + rowGap * (rows - 1);
+  const gridY = availTop + (availH - totalGridH) / 2;
 
   cards.forEach((card, i) => {
     const col = i % cols;
@@ -84,11 +90,17 @@ function _drawIconCard(slide, prs, { x, y, w, h, icon, label, title, body, color
     fill: { color: color.main, transparency: 75 },
     line: { color: color.main, transparency: 50, width: 0.75 },
   });
-  slide.addText(icon || '●', {
-    x: iconX, y: iconY + 0.02, w: iconSize, h: iconSize - 0.04,
-    fontSize: Math.round(iconSize * 26), color: color.main,
-    fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
-  });
+  const iconDataUrl = getIconDataUrl(icon, color.main);
+  if (iconDataUrl) {
+    const pad = iconSize * 0.22;
+    slide.addImage({ data: iconDataUrl, x: iconX + pad, y: iconY + pad, w: iconSize - pad * 2, h: iconSize - pad * 2 });
+  } else {
+    slide.addText(icon || '●', {
+      x: iconX, y: iconY + 0.02, w: iconSize, h: iconSize - 0.04,
+      fontSize: Math.round(iconSize * 26), color: color.main,
+      fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
+    });
+  }
 
   let curY = iconY + iconSize + 0.1;
 
@@ -101,19 +113,19 @@ function _drawIconCard(slide, prs, { x, y, w, h, icon, label, title, body, color
   }
 
   slide.addText(title || '', {
-    x: x + P * 0.4, y: curY, w: w - P * 0.8, h: 0.3,
+    x: x + P * 0.4, y: curY, w: w - P * 0.8, h: 0.44,
     fontSize: SIZE.cardTitle, bold: true, color: TEXT.white,
-    fontFace: FONT.main, align: 'center', wrap: true,
+    fontFace: FONT.main, align: 'center', wrap: true, shrinkText: true,
   });
-  curY += 0.32;
+  curY += 0.46;
 
   if (body) {
     const bodyH = y + h - curY - P * 0.4;
     slide.addText(body, {
       x: x + P * 0.5, y: curY, w: w - P, h: bodyH,
       fontSize: SIZE.cardBody, color: TEXT.muted,
-      fontFace: FONT.main, align: 'center', valign: 'top',
-      wrap: true, lineSpacingMultiple: 1.2,
+      fontFace: FONT.main, align: 'center', valign: 'middle',
+      wrap: true, lineSpacingMultiple: 1.2, shrinkText: true,
     });
   }
 }

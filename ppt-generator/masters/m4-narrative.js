@@ -149,7 +149,7 @@ function _drawNarrativeBox(slide, prs, { x, y, w, h, title, bullets, color, acce
       slide.addText(bullet.title, {
         x: x + P + 0.26, y: by + 0.03, w: w - P - 0.32, h: 0.24,
         fontSize: SIZE.bullet, bold: true, color: TEXT.white,
-        fontFace: FONT.main, align: 'left',
+        fontFace: FONT.main, align: 'left', shrinkText: true,
       });
     }
     if (hasBody) {
@@ -158,7 +158,7 @@ function _drawNarrativeBox(slide, prs, { x, y, w, h, title, bullets, color, acce
         h: itemH - (hasTitle ? 0.32 : 0.1),
         fontSize: SIZE.bulletSub, color: TEXT.muted,
         fontFace: FONT.main, align: 'left', wrap: true,
-        lineSpacingMultiple: 1.2,
+        lineSpacingMultiple: 1.15, shrinkText: true,
       });
     }
   });

@@ -14,10 +14,11 @@ const { addM3CompareSlide, addM3ColumnsSlide } = require('./masters/m3-compariso
 const { addM4Slide } = require('./masters/m4-narrative');
 const { addM5Slide } = require('./masters/m5-timeline');
 const { addM6Slide } = require('./masters/m6-resource');
+const { addM7Slide } = require('./masters/m7-diagram');
 
 const SLIDES_JSON = path.join(__dirname, 'content/slides.json');
 const OUTPUT_DIR = path.join(__dirname, 'output');
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'aws-cloud-burst.pptx');
+const OUTPUT_FILE = path.join(OUTPUT_DIR, 'cloud-aws-infra-intro.pptx');
 
 // ── 섹션 → 색상 매핑 헬퍼 ─────────────────────────────────
 function getColor(section) {
@@ -69,6 +70,9 @@ function buildSlide(prs, data) {
 
     case 'M5':
       return addM5Slide(prs, slideData);
+
+    case 'M7':
+      return addM7Slide(prs, slideData);
 
     case 'M6':
       return addM6Slide(prs, {

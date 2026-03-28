@@ -58,9 +58,10 @@ const SECTION_COLOR = {
 };
 
 // ── 폰트 ────────────────────────────────────────────────
+// Malgun Gothic: Windows 기본 내장 한글 폰트 → 어느 PC에서나 한글 정상 출력
 const FONT = {
-  main: 'Pretendard',
-  fallback: 'Pretendard',
+  main: 'Malgun Gothic',
+  fallback: 'Malgun Gothic',
 };
 
 // ── 폰트 크기 (pt) ───────────────────────────────────────

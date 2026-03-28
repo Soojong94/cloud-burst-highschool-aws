@@ -2,6 +2,7 @@
 const {
   SLIDE_W, SLIDE_H, BG, TEXT, FONT, SIZE, LAYOUT,
 } = require('../theme');
+const { getIconDataUrl } = require('../icons');
 
 function addM6Slide(prs, data) {
   const slide = prs.addSlide();
@@ -58,10 +59,16 @@ function addM6Slide(prs, data) {
       fill: { color: cardColor.main, transparency: 72 },
       line: { color: cardColor.main, transparency: 50, width: 0.75 },
     });
-    slide.addText(card.icon || '📌', {
-      x: iconX, y: iconY + 0.02, w: iconSize, h: iconSize - 0.04,
-      fontSize: 20, fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
-    });
+    const cardIconUrl = getIconDataUrl(card.icon, cardColor.main);
+    if (cardIconUrl) {
+      const pad = iconSize * 0.2;
+      slide.addImage({ data: cardIconUrl, x: iconX + pad, y: iconY + pad, w: iconSize - pad * 2, h: iconSize - pad * 2 });
+    } else {
+      slide.addText(card.icon || '📌', {
+        x: iconX, y: iconY + 0.02, w: iconSize, h: iconSize - 0.04,
+        fontSize: 20, fontFace: 'Segoe UI Emoji', align: 'center', valign: 'middle',
+      });
+    }
 
     let curY = iconY + iconSize + 0.1;
 
