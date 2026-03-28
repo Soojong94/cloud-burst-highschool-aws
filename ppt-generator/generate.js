@@ -18,7 +18,7 @@ const { addM7Slide } = require('./masters/m7-diagram');
 
 const SLIDES_JSON = path.join(__dirname, 'content/slides.json');
 const OUTPUT_DIR = path.join(__dirname, 'output');
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'cloud-aws-infra-intro.pptx');
+const OUTPUT_FILE = path.join(OUTPUT_DIR, 'cloud-aws-infra-v2.pptx');
 
 // ── 섹션 → 색상 매핑 헬퍼 ─────────────────────────────────
 function getColor(section) {

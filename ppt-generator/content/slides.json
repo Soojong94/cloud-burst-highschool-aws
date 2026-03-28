@@ -69,11 +69,11 @@
     ]
   },
   {
-    "file": "S03CloudConcept",
+    "file": "S03aCloudConcept1",
     "master": "M2",
     "section": "cloud",
     "title": "클라우드 컴퓨팅이란?",
-    "subtitle": "인터넷을 통해 컴퓨팅 자원을 서비스로 제공하는 방식. NIST가 정의한 5가지 핵심 특성으로 이해할 수 있습니다.",
+    "subtitle": "NIST가 정의한 5가지 핵심 특성 — 1/2",
     "cards": [
       {
         "icon": "globe",
@@ -92,7 +92,16 @@
         "label": "특성 3",
         "title": "자원 풀링",
         "body": "여러 고객이 물리 자원을 공유(멀티테넌시). 각 고객은 완전히 격리된 가상 환경에서 사용."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S03bCloudConcept2",
+    "master": "M2",
+    "section": "cloud",
+    "title": "클라우드 컴퓨팅이란?",
+    "subtitle": "NIST가 정의한 5가지 핵심 특성 — 2/2",
+    "cards": [
       {
         "icon": "scaling",
         "label": "특성 4",
@@ -108,7 +117,7 @@
     ]
   },
   {
-    "file": "S04CloudBenefits",
+    "file": "S04aCloudBenefits",
     "master": "M4",
     "section": "cloud",
     "title": "클라우드가 바꾼 것들",
@@ -147,22 +156,38 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S04bCloudBenefitsEx",
+    "master": "M2",
+    "section": "cloud",
+    "title": "실제 기업들의 클라우드 활용",
+    "subtitle": "우리가 매일 쓰는 서비스들이 AWS에서 돌아갑니다",
+    "cards": [
       {
-        "title": "🛒 쿠팡",
-        "body": "새벽배송 폭주해도 자동 확장, 끝나면 자동 축소"
+        "icon": "box",
+        "label": "실사례",
+        "title": "쿠팡",
+        "body": "새벽배송 폭주해도 자동 확장, 끝나면 자동 축소. 수백만 주문을 안정적으로 처리."
       },
       {
-        "title": "🎬 넷플릭스",
-        "body": "서버 없이 전 세계 1억명 동시 스트리밍"
+        "icon": "globe",
+        "label": "실사례",
+        "title": "넷플릭스",
+        "body": "서버 없이 전 세계 1억명 동시 스트리밍. AWS 없이는 불가능했을 규모."
       },
       {
-        "title": "🍔 배달의민족",
-        "body": "점심·저녁 피크 타임에만 서버 자동 증가"
+        "icon": "bolt",
+        "label": "실사례",
+        "title": "배달의민족",
+        "body": "점심·저녁 피크 타임에만 서버 자동 증가. 새벽엔 자동으로 줄어 비용 절감."
       },
       {
-        "title": "💬 카카오톡",
-        "body": "수능 합격 발표날 폭발적 트래픽도 무중단"
+        "icon": "users",
+        "label": "실사례",
+        "title": "카카오톡",
+        "body": "수능 합격 발표날 폭발적 트래픽도 무중단. 평소 대비 수십 배 급증을 자동 처리."
       }
     ]
   },
@@ -215,11 +240,11 @@
     ]
   },
   {
-    "file": "S06CSPComparison",
+    "file": "S06aCSPComparison1",
     "master": "M2",
     "section": "cloud",
     "title": "3대 클라우드 서비스 제공자",
-    "subtitle": "전 세계 클라우드 시장은 AWS, Azure, GCP 세 곳이 약 65%를 점유합니다",
+    "subtitle": "전 세계 클라우드 시장은 AWS, Azure, GCP 세 곳이 약 65%를 점유합니다 — 1/2",
     "cards": [
       {
         "icon": "trophy",
@@ -232,7 +257,16 @@
         "label": "2위",
         "title": "Microsoft Azure",
         "body": "시장 점유율 약 25%. 기업용 Windows, Office365와 연계 강점. 기존 마이크로소프트 제품을 사용하는 대기업에 적합."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S06bCSPComparison2",
+    "master": "M2",
+    "section": "cloud",
+    "title": "3대 클라우드 서비스 제공자",
+    "subtitle": "전 세계 클라우드 시장은 AWS, Azure, GCP 세 곳이 약 65%를 점유합니다 — 2/2",
+    "cards": [
       {
         "icon": "chart",
         "label": "3위",
@@ -248,11 +282,11 @@
     ]
   },
   {
-    "file": "S07AWSIntro",
+    "file": "S07aAWSIntro1",
     "master": "M2",
     "section": "aws",
     "title": "AWS — 클라우드 1위",
-    "subtitle": "2006년 출시 이후 한 번도 1위를 내준 적 없는 클라우드 플랫폼. 전 세계 240만 개 이상 기업이 사용",
+    "subtitle": "2006년 출시 이후 한 번도 1위를 내준 적 없는 클라우드 플랫폼 — 1/2",
     "cards": [
       {
         "icon": "calendar",
@@ -265,7 +299,16 @@
         "label": "규모",
         "title": "200개 이상 서비스",
         "body": "컴퓨팅, 스토리지, DB, 네트워크, 보안, AI/ML, IoT, 게임 등 IT 전 분야 서비스 제공."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S07bAWSIntro2",
+    "master": "M2",
+    "section": "aws",
+    "title": "AWS — 클라우드 1위",
+    "subtitle": "2006년 출시 이후 한 번도 1위를 내준 적 없는 클라우드 플랫폼 — 2/2",
+    "cards": [
       {
         "icon": "globe",
         "label": "인프라",
@@ -281,7 +324,7 @@
     ]
   },
   {
-    "file": "S08GlobalInfra",
+    "file": "S08aGlobalInfra",
     "master": "M4",
     "section": "aws",
     "title": "AWS 글로벌 인프라",
@@ -320,27 +363,43 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S08bGlobalInfraEx",
+    "master": "M2",
+    "section": "aws",
+    "title": "비유로 이해하는 글로벌 인프라",
+    "subtitle": "리전, 가용 영역, 엣지 로케이션을 일상 개념으로",
+    "cards": [
       {
-        "title": "🗺 리전 = 도시",
-        "body": "서울, 도쿄처럼 지리적으로 떨어진 독립 데이터센터 클러스터"
+        "icon": "globe",
+        "label": "비유",
+        "title": "리전 = 도시",
+        "body": "서울, 도쿄처럼 지리적으로 떨어진 독립 데이터센터 클러스터. 가까운 도시를 선택하면 빠르고 법규도 충족."
       },
       {
-        "title": "🏢 AZ = 건물",
-        "body": "같은 도시 안 서로 다른 건물. 하나 정전돼도 옆 건물은 정상"
+        "icon": "building",
+        "label": "비유",
+        "title": "AZ = 건물",
+        "body": "같은 도시 안 서로 다른 건물. 하나 정전돼도 옆 건물은 정상 운영. 2개 이상 AZ 분산이 기본."
       },
       {
-        "title": "🏪 엣지 = 편의점",
-        "body": "전국 600곳에 캐시 서버. 가장 가까운 곳에서 즉시 응답"
+        "icon": "pin",
+        "label": "비유",
+        "title": "엣지 = 편의점",
+        "body": "전국 600곳에 캐시 서버. 가장 가까운 곳에서 즉시 응답. 멀리 있는 본점까지 갈 필요 없음."
       },
       {
-        "title": "🇰🇷 서울 리전",
-        "body": "카카오, 쿠팡, 네이버, 토스 모두 서울 리전(ap-northeast-2) 사용"
+        "icon": "star",
+        "label": "서울",
+        "title": "ap-northeast-2",
+        "body": "카카오, 쿠팡, 네이버, 토스 모두 서울 리전 사용. 국내 서비스라면 이 리전이 기본 선택."
       }
     ]
   },
   {
-    "file": "S08bGlobalInfraDiagram",
+    "file": "S08cGlobalInfraDiagram",
     "master": "M7",
     "section": "aws",
     "color": "orange",
@@ -349,11 +408,11 @@
     "diagram": "global_infra"
   },
   {
-    "file": "S09VPC",
+    "file": "S09aVPC1",
     "master": "M2",
     "section": "network",
     "title": "VPC — 나만의 사설 네트워크",
-    "subtitle": "VPC(Virtual Private Cloud)는 AWS 안에 만드는 격리된 네트워크 공간. 아파트 단지처럼 외부와 분리된 내 구역",
+    "subtitle": "VPC(Virtual Private Cloud)는 AWS 안에 만드는 격리된 네트워크 공간 — 1/2",
     "cards": [
       {
         "icon": "network",
@@ -366,7 +425,16 @@
         "label": "서브넷",
         "title": "Public / Private 서브넷",
         "body": "인터넷에 직접 연결되는 퍼블릭 서브넷과 외부 차단된 프라이빗 서브넷으로 구역을 나눔. 목적에 따라 리소스 배치."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S09bVPC2",
+    "master": "M2",
+    "section": "network",
+    "title": "VPC — 나만의 사설 네트워크",
+    "subtitle": "VPC(Virtual Private Cloud)는 AWS 안에 만드는 격리된 네트워크 공간 — 2/2",
+    "cards": [
       {
         "icon": "key",
         "label": "IGW",
@@ -382,7 +450,7 @@
     ]
   },
   {
-    "file": "S10VPCDetail",
+    "file": "S10aVPCDetail",
     "master": "M4",
     "section": "network",
     "title": "VPC 구성요소 상세",
@@ -396,11 +464,11 @@
         },
         {
           "title": "NAT 게이트웨이",
-          "body": "프라이빗 서브넷의 서버가 인터넷으로 나갈 수 있게 해주는 번역기. 외부에서는 접근 불가 — 단방향 출구. 소프트웨어 업데이트 등에 활용."
+          "body": "프라이빗 서브넷의 서버가 인터넷으로 나갈 수 있게 해주는 번역기. 외부에서는 접근 불가 — 단방향 출구."
         },
         {
           "title": "VPC Peering",
-          "body": "두 VPC를 직접 연결하는 사설 채널. 다른 계정이나 다른 리전의 VPC도 연결 가능. 내부 트래픽은 인터넷을 거치지 않음."
+          "body": "두 VPC를 직접 연결하는 사설 채널. 다른 계정이나 리전의 VPC도 연결 가능. 인터넷을 거치지 않음."
         }
       ]
     },
@@ -421,27 +489,43 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S10bVPCDetailEx",
+    "master": "M2",
+    "section": "network",
+    "title": "비유로 이해하는 VPC 보안",
+    "subtitle": "네트워크 보안 개념을 일상 비유로",
+    "cards": [
       {
-        "title": "🗺 라우팅 = 도로 표지판",
-        "body": "패킷이 어디로 갈지 알려주는 지도. 인터넷행, 내부행 경로를 지정"
+        "icon": "arrows",
+        "label": "비유",
+        "title": "라우팅 = 도로 표지판",
+        "body": "패킷이 어디로 갈지 알려주는 지도. 인터넷행, 내부행 경로를 서브넷마다 따로 지정."
       },
       {
-        "title": "🚪 NAT = 대표번호",
-        "body": "내부에서 외부로만 연결. 외부에서는 내부 서버 주소를 알 수 없음"
+        "icon": "shield",
+        "label": "비유",
+        "title": "NAT = 대표번호",
+        "body": "내부에서 외부로만 연결. 외부에서는 내부 서버 주소를 알 수 없어 안전."
       },
       {
-        "title": "👮 보안 그룹 = 경비원",
-        "body": "허가된 포트만 통과. 80(웹), 443(HTTPS), 22(SSH) 외 전부 차단"
+        "icon": "lock",
+        "label": "비유",
+        "title": "보안 그룹 = 경비원",
+        "body": "허가된 포트만 통과. 80(웹), 443(HTTPS), 22(SSH) 외 전부 차단. 인스턴스마다 다르게 설정."
       },
       {
-        "title": "🔐 ACL = 아파트 입구",
-        "body": "서브넷 전체에 적용되는 관문. 보안 그룹 앞단의 추가 방어선"
+        "icon": "key",
+        "label": "비유",
+        "title": "ACL = 아파트 입구",
+        "body": "서브넷 전체에 적용되는 관문. 보안 그룹 앞단의 추가 방어선. 인바운드/아웃바운드 각각 설정."
       }
     ]
   },
   {
-    "file": "S10bVPCDiagram",
+    "file": "S10cVPCDiagram",
     "master": "M7",
     "section": "network",
     "color": "blue",
@@ -450,11 +534,11 @@
     "diagram": "vpc"
   },
   {
-    "file": "S11EC2",
+    "file": "S11aEC21",
     "master": "M2",
     "section": "ec2",
     "title": "EC2 — 클라우드 가상 서버",
-    "subtitle": "Elastic Compute Cloud. 원하는 사양의 서버를 수 분 내에 시작하고, 필요 없으면 언제든 종료",
+    "subtitle": "Elastic Compute Cloud. 원하는 사양의 서버를 수 분 내에 시작 — 1/2",
     "cards": [
       {
         "icon": "server",
@@ -464,15 +548,24 @@
       },
       {
         "icon": "box",
-        "label": "인스턴스 유형",
+        "label": "인스턴스유형",
         "title": "목적별 선택",
         "body": "t-계열 (범용/저렴), m-계열 (균형), c-계열 (컴퓨팅), r-계열 (메모리 집약), g-계열 (GPU). 수십 가지 타입 중 선택."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S11bEC22",
+    "master": "M2",
+    "section": "ec2",
+    "title": "EC2 — 클라우드 가상 서버",
+    "subtitle": "Elastic Compute Cloud. 원하는 사양의 서버를 수 분 내에 시작 — 2/2",
+    "cards": [
       {
         "icon": "refresh",
         "label": "확장",
         "title": "Auto Scaling",
-        "body": "트래픽 증가 시 자동으로 인스턴스 추가, 감소 시 자동 제거. 비용 낭비 없이 성능 유지. 최소, 최대, 희망 수량 설정."
+        "body": "트래픽 증가 시 자동으로 인스턴스 추가, 감소 시 자동 제거. 비용 낭비 없이 성능 유지. 최소·최대·희망 수량 설정."
       },
       {
         "icon": "scaling",
@@ -483,7 +576,7 @@
     ]
   },
   {
-    "file": "S12EC2Detail",
+    "file": "S12aEC2Detail",
     "master": "M4",
     "section": "ec2",
     "title": "EC2 인스턴스 유형과 요금",
@@ -518,35 +611,51 @@
         },
         {
           "title": "스팟 인스턴스",
-          "body": "AWS 여유 자원 활용, 최대 90% 저렴. 언제든 중단될 수 있어 배치 작업, 데이터 처리에 적합. 중단 허용 아키텍처 필요."
+          "body": "AWS 여유 자원 활용, 최대 90% 저렴. 언제든 중단될 수 있어 배치 작업, 데이터 처리에 적합."
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S12bEC2DetailEx",
+    "master": "M2",
+    "section": "ec2",
+    "title": "비유로 이해하는 EC2 인스턴스",
+    "subtitle": "PC 종류처럼 목적에 맞게 고르면 됩니다",
+    "cards": [
       {
-        "title": "💻 t3 = 일반 노트북",
-        "body": "가볍고 저렴. 블로그, 소규모 API, 개발 환경에 적합"
+        "icon": "cpu",
+        "label": "비유",
+        "title": "t3 = 일반 노트북",
+        "body": "가볍고 저렴. 블로그, 소규모 API, 개발 환경에 적합. 프리 티어로 t2.micro를 무료로 체험 가능."
       },
       {
-        "title": "🖥 m6i = 사무용 데스크탑",
-        "body": "CPU·메모리 균형. 일반적인 웹서비스, 중소 DB에 가장 많이 사용"
+        "icon": "server",
+        "label": "비유",
+        "title": "m6i = 사무용 데스크탑",
+        "body": "CPU·메모리 균형. 일반적인 웹서비스, 중소 DB에 가장 많이 사용. 가성비 좋은 범용 선택."
       },
       {
-        "title": "🎬 c7g = 편집용 워크스테이션",
-        "body": "CPU 특화. 동영상 인코딩, 대량 계산, 고성능 API 서버에 적합"
+        "icon": "tool",
+        "label": "비유",
+        "title": "c7g = 편집용 워크스테이션",
+        "body": "CPU 특화. 동영상 인코딩, 대량 계산, 고성능 API 서버에 적합. 연산 집약적 작업 전용."
       },
       {
-        "title": "🧠 r계열 = 대용량 RAM PC",
-        "body": "메모리 집약적 작업. 인메모리 DB, 빅데이터 처리에 사용"
+        "icon": "layers",
+        "label": "비유",
+        "title": "r계열 = 대용량 RAM PC",
+        "body": "메모리 집약적 작업. 인메모리 DB, 빅데이터 처리에 사용. 메모리가 많이 필요한 경우 선택."
       }
     ]
   },
   {
-    "file": "S13S3",
+    "file": "S13aS31",
     "master": "M2",
     "section": "s3",
     "title": "S3 — 무제한 객체 스토리지",
-    "subtitle": "Simple Storage Service. 파일을 저장하는 가장 기본적인 AWS 서비스. 이미지, 동영상, 백업, 로그 등 모든 파일",
+    "subtitle": "Simple Storage Service. 이미지, 동영상, 백업, 로그 등 모든 파일 — 1/2",
     "cards": [
       {
         "icon": "database",
@@ -559,7 +668,16 @@
         "label": "내구성",
         "title": "99.999999999%",
         "body": "이른바 11 nine 내구성. 데이터를 3개 이상의 AZ에 자동 복제. 사실상 데이터 손실이 없는 수준의 안정성."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S13bS32",
+    "master": "M2",
+    "section": "s3",
+    "title": "S3 — 무제한 객체 스토리지",
+    "subtitle": "Simple Storage Service. 이미지, 동영상, 백업, 로그 등 모든 파일 — 2/2",
+    "cards": [
       {
         "icon": "globe",
         "label": "활용",
@@ -570,12 +688,12 @@
         "icon": "money",
         "label": "비용",
         "title": "스토리지 클래스",
-        "body": "Standard(자주 접근), IA(가끔 접근), Glacier(장기 아카이브) 등. 접근 빈도에 따라 클래스를 선택해 비용 최적화."
+        "body": "Standard(자주 접근), IA(가끔 접근), Glacier(장기 아카이브) 등. 접근 빈도에 따라 선택해 비용 최적화."
       }
     ]
   },
   {
-    "file": "S14S3Detail",
+    "file": "S14aS3Detail",
     "master": "M4",
     "section": "s3",
     "title": "S3 활용 패턴",
@@ -614,22 +732,38 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S14bS3DetailEx",
+    "master": "M2",
+    "section": "s3",
+    "title": "비유로 이해하는 S3",
+    "subtitle": "파일 저장소를 넘어 다양하게 활용하는 S3",
+    "cards": [
       {
-        "title": "☁️ S3 = 구글 드라이브",
-        "body": "파일을 업로드해두면 어디서든 링크로 접근. 단, 용량 제한 없음"
+        "icon": "folder",
+        "label": "비유",
+        "title": "S3 = 구글 드라이브",
+        "body": "파일을 업로드해두면 어디서든 링크로 접근. 용량 제한 없고 11 nine 내구성. 기업용 스케일."
       },
       {
-        "title": "📦 Glacier = 창고",
-        "body": "자주 안 꺼내는 물건은 창고로. 비용 대폭 절감, 꺼내는 데 수 분~수 시간"
+        "icon": "database",
+        "label": "비유",
+        "title": "Glacier = 창고",
+        "body": "자주 안 꺼내는 물건은 창고로. 비용 대폭 절감. 꺼내는 데 수 분~수 시간. 오래된 로그, 백업에 적합."
       },
       {
-        "title": "🔄 버전관리 = 구글 Docs 기록",
-        "body": "덮어써도 이전 버전 복원 가능. \"어제 파일로 돌려줘\"가 그냥 됨"
+        "icon": "refresh",
+        "label": "비유",
+        "title": "버전관리 = 구글 Docs 기록",
+        "body": "덮어써도 이전 버전 복원 가능. 어제 파일로 돌려줘가 그냥 됨. 실수로 삭제해도 복구 가능."
       },
       {
-        "title": "🌐 정적 호스팅 = 파일로 운영하는 웹사이트",
-        "body": "서버 없이 HTML 파일만 올려도 전 세계에서 접속 가능"
+        "icon": "globe",
+        "label": "비유",
+        "title": "정적 호스팅 = 파일만으로 운영",
+        "body": "서버 없이 HTML 파일만 올려도 전 세계에서 접속 가능. CloudFront와 연결하면 초고속."
       }
     ]
   },
@@ -694,7 +828,7 @@
     ]
   },
   {
-    "file": "S16DatabaseDetail",
+    "file": "S16aDatabaseDetail",
     "master": "M4",
     "section": "database",
     "title": "RDS 핵심 기능",
@@ -733,31 +867,47 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S16bDatabaseDetailEx",
+    "master": "M2",
+    "section": "database",
+    "title": "비유로 이해하는 RDS",
+    "subtitle": "DB의 핵심 기능을 일상 개념으로",
+    "cards": [
       {
-        "title": "💾 자동 백업 = 폰 자동 백업",
-        "body": "스마트폰이 매일 밤 알아서 백업하듯 RDS도 매일 자동 스냅샷 생성"
+        "icon": "refresh",
+        "label": "비유",
+        "title": "자동 백업 = 폰 자동 백업",
+        "body": "스마트폰이 매일 밤 알아서 백업하듯 RDS도 매일 자동 스냅샷 생성. 아무것도 안 해도 됨."
       },
       {
-        "title": "🏢 멀티 AZ = 중요 서류 복사 보관",
-        "body": "중요 서류를 두 군데 보관. 한 곳에 불이 나도 다른 곳 서류는 안전"
+        "icon": "layers",
+        "label": "비유",
+        "title": "멀티 AZ = 중요 서류 복사 보관",
+        "body": "중요 서류를 두 군데 보관. 한 곳에 불이 나도 다른 곳 서류는 안전. 자동으로 전환."
       },
       {
-        "title": "📖 Read Replica = 복사본 도서관",
-        "body": "원본 훼손 방지를 위해 복사본만 대출. 조회 트래픽을 복사본이 처리"
+        "icon": "book",
+        "label": "비유",
+        "title": "Read Replica = 복사본 도서관",
+        "body": "원본 훼손 방지를 위해 복사본만 대출. 조회 트래픽을 복사본이 처리해 원본 부하 감소."
       },
       {
-        "title": "⚡ Aurora = 고성능 엔진",
-        "body": "같은 MySQL 문법인데 속도가 최대 5배. 고트래픽 서비스에 최적화"
+        "icon": "bolt",
+        "label": "비유",
+        "title": "Aurora = 고성능 엔진",
+        "body": "같은 MySQL 문법인데 속도가 최대 5배. 고트래픽 서비스에 최적화. 비용은 더 높음."
       }
     ]
   },
   {
-    "file": "S17IAM",
+    "file": "S17aIAM1",
     "master": "M2",
     "section": "security",
     "title": "IAM — 권한 관리의 기본",
-    "subtitle": "\"누가, 어떤 리소스에, 무엇을 할 수 있는가\"를 정의. AWS의 모든 액세스는 IAM을 통해 제어됩니다",
+    "subtitle": "\"누가, 어떤 리소스에, 무엇을 할 수 있는가\"를 정의 — 1/2",
     "cards": [
       {
         "icon": "user",
@@ -770,7 +920,16 @@
         "label": "Group",
         "title": "IAM 그룹",
         "body": "여러 사용자를 묶어 권한 일괄 부여. 개발팀, 운영팀처럼 팀 단위로 정책을 적용하면 관리가 편리."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S17bIAM2",
+    "master": "M2",
+    "section": "security",
+    "title": "IAM — 권한 관리의 기본",
+    "subtitle": "\"누가, 어떤 리소스에, 무엇을 할 수 있는가\"를 정의 — 2/2",
+    "cards": [
       {
         "icon": "key",
         "label": "Role",
@@ -786,7 +945,7 @@
     ]
   },
   {
-    "file": "S18IAMDetail",
+    "file": "S18aIAMDetail",
     "master": "M4",
     "section": "security",
     "title": "IAM 실전 원칙",
@@ -800,11 +959,11 @@
         },
         {
           "title": "루트 계정 잠금",
-          "body": "계정 최초 생성 시 만들어지는 루트 계정은 MFA 설정 후 일상 사용 금지. 청구 관리 등 꼭 필요한 경우에만 사용."
+          "body": "계정 최초 생성 시 만들어지는 루트 계정은 MFA 설정 후 일상 사용 금지. 꼭 필요한 경우에만 사용."
         },
         {
           "title": "MFA (다중 인증) 필수",
-          "body": "비밀번호가 유출돼도 OTP 등 2차 인증이 없으면 로그인 불가. 모든 사람 계정에 반드시 적용. 특히 권한 높은 계정."
+          "body": "비밀번호가 유출돼도 OTP 등 2차 인증이 없으면 로그인 불가. 모든 계정에 반드시 적용."
         }
       ]
     },
@@ -825,27 +984,43 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S18bIAMDetailEx",
+    "master": "M2",
+    "section": "security",
+    "title": "비유로 이해하는 IAM",
+    "subtitle": "권한 관리를 일상 개념으로",
+    "cards": [
       {
-        "title": "🪪 IAM = 회사 출입증",
-        "body": "직급마다 다른 출입 권한. 인턴은 사무실만, 팀장은 서버실도 출입 가능"
+        "icon": "user",
+        "label": "비유",
+        "title": "IAM = 회사 출입증",
+        "body": "직급마다 다른 출입 권한. 인턴은 사무실만, 팀장은 서버실도 출입 가능. 사람마다 다른 출입증 발급."
       },
       {
-        "title": "🔑 루트 계정 = 마스터키",
-        "body": "마스터키는 금고에 잠궈 보관. 일상에서는 절대 꺼내 쓰지 않음"
+        "icon": "key",
+        "label": "비유",
+        "title": "루트 계정 = 마스터키",
+        "body": "마스터키는 금고에 잠궈 보관. 일상에서는 절대 꺼내 쓰지 않음. 분실 시 전체 위험."
       },
       {
-        "title": "📱 MFA = 은행 OTP",
-        "body": "비밀번호가 유출돼도 OTP 없이는 로그인 불가. 2단계 인증 필수"
+        "icon": "lock",
+        "label": "비유",
+        "title": "MFA = 은행 OTP",
+        "body": "비밀번호가 유출돼도 OTP 없이는 로그인 불가. 2단계 인증 필수. 스마트폰 OTP 앱 사용."
       },
       {
-        "title": "🤖 역할 = 업무별 권한 카드",
-        "body": "EC2가 S3 접근 필요 시 역할 부여. 키를 코드에 하드코딩할 필요 없음"
+        "icon": "settings",
+        "label": "비유",
+        "title": "역할 = 업무별 권한 카드",
+        "body": "EC2가 S3 접근 시 역할 부여. 액세스 키를 코드에 하드코딩할 필요 없음. 자동 갱신."
       }
     ]
   },
   {
-    "file": "S19Lambda",
+    "file": "S19aLambda",
     "master": "M4",
     "section": "serverless",
     "title": "Lambda — 서버 없이 코드 실행",
@@ -884,22 +1059,38 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S19bLambdaEx",
+    "master": "M2",
+    "section": "serverless",
+    "title": "비유로 이해하는 Lambda",
+    "subtitle": "이벤트 기반 서버리스를 일상 개념으로",
+    "cards": [
       {
-        "title": "🎰 자판기 = 이벤트 기반",
-        "body": "동전 넣을 때만 작동. Lambda도 요청 왔을 때만 실행, 대기 비용 없음"
+        "icon": "bolt",
+        "label": "비유",
+        "title": "자판기 = 이벤트 기반",
+        "body": "동전 넣을 때만 작동. Lambda도 요청 왔을 때만 실행, 대기 비용 없음. 쉬고 있으면 0원."
       },
       {
-        "title": "🚖 대리기사 = 필요할 때만 호출",
-        "body": "항상 대기하는 직원이 아니라 콜 오면 달려오는 방식. 비용 효율 극대화"
+        "icon": "target",
+        "label": "비유",
+        "title": "대리기사 = 필요할 때만 호출",
+        "body": "항상 대기하는 직원이 아니라 콜 오면 달려오는 방식. 비용 효율 극대화. 없으면 0원."
       },
       {
-        "title": "🤖 로봇청소기 = 정기 배치",
-        "body": "매일 새벽 자동 실행. EventBridge로 Cron 설정하면 사람 없이 동작"
+        "icon": "refresh",
+        "label": "비유",
+        "title": "로봇청소기 = 정기 배치",
+        "body": "매일 새벽 자동 실행. EventBridge로 Cron 설정하면 사람 없이 동작. 예약 청소처럼."
       },
       {
-        "title": "📸 썸네일 자동 생성",
-        "body": "이미지 업로드 → Lambda 자동 실행 → 리사이징 → S3 저장. 코드만 작성"
+        "icon": "upload",
+        "label": "실사례",
+        "title": "썸네일 자동 생성",
+        "body": "이미지 업로드 → Lambda 자동 실행 → 리사이징 → S3 저장. 서버 없이 코드만 작성."
       }
     ]
   },
@@ -961,7 +1152,7 @@
     "diagram": "architecture"
   },
   {
-    "file": "S21RealWorld",
+    "file": "S21aRealWorld",
     "master": "M4",
     "section": "aws",
     "title": "실제 웹 서비스 구성 예시",
@@ -1000,31 +1191,47 @@
         }
       ]
     },
-    "bottomGrid": [
+    "bottomGrid": []
+  },
+  {
+    "file": "S21bRealWorldEx",
+    "master": "M2",
+    "section": "aws",
+    "title": "비유로 이해하는 웹 서비스 구성",
+    "subtitle": "쇼핑몰을 예시로 각 AWS 서비스의 역할을",
+    "cards": [
       {
-        "title": "🪧 Route 53 = 간판",
-        "body": "\"쿠팡.com\" 입력하면 실제 서버 IP로 안내. 도메인 구매도 AWS에서 가능"
+        "icon": "globe",
+        "label": "비유",
+        "title": "Route 53 = 간판",
+        "body": "\"쿠팡.com\" 입력하면 실제 서버 IP로 안내. 간판을 보고 가게 찾아가듯. 도메인 구매도 AWS에서 가능."
       },
       {
-        "title": "🎪 ALB = 줄 서기 안내원",
-        "body": "손님(요청)을 여러 계산대(서버)로 균등 배분. 바쁜 서버엔 덜 보냄"
+        "icon": "arrows",
+        "label": "비유",
+        "title": "ALB = 줄 서기 안내원",
+        "body": "손님(요청)을 여러 계산대(서버)로 균등 배분. 바쁜 서버엔 덜 보냄. 한 서버 죽으면 자동 우회."
       },
       {
-        "title": "🗄 ElastiCache = 책상 위 메모",
-        "body": "자주 쓰는 정보를 DB 대신 메모리에서 즉시 꺼냄. 응답 속도 10~100배"
+        "icon": "database",
+        "label": "비유",
+        "title": "ElastiCache = 책상 위 메모",
+        "body": "자주 쓰는 정보를 DB 대신 메모리에서 즉시 꺼냄. 응답 속도 10~100배. DB 부하 대폭 감소."
       },
       {
-        "title": "🛡 WAF = 보안 검색대",
-        "body": "악성 요청 자동 차단. SQL 인젝션, XSS 등 해킹 시도 걸러냄"
+        "icon": "shield",
+        "label": "비유",
+        "title": "WAF = 보안 검색대",
+        "body": "악성 요청 자동 차단. SQL 인젝션, XSS 등 해킹 시도 걸러냄. 입장 전 검사하는 보안 검색대."
       }
     ]
   },
   {
-    "file": "S22WellArchitected",
+    "file": "S22aWellArchitected1",
     "master": "M2",
     "section": "aws",
     "title": "Well-Architected Framework",
-    "subtitle": "AWS가 수천 개 고객 아키텍처를 검토하며 정리한 설계 원칙 — 좋은 클라우드 아키텍처의 기준",
+    "subtitle": "AWS가 정리한 좋은 클라우드 아키텍처 기준 — 1/2",
     "cards": [
       {
         "icon": "lock",
@@ -1037,7 +1244,16 @@
         "label": "원칙 2",
         "title": "신뢰성",
         "body": "멀티 AZ 배포. 자동 장애 복구 설계. 정기 백업. 단일 장애점(SPOF) 없애기. 장애를 가정하고 설계."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S22bWellArchitected2",
+    "master": "M2",
+    "section": "aws",
+    "title": "Well-Architected Framework",
+    "subtitle": "AWS가 정리한 좋은 클라우드 아키텍처 기준 — 2/2",
+    "cards": [
       {
         "icon": "bolt",
         "label": "원칙 3",
@@ -1053,11 +1269,11 @@
     ]
   },
   {
-    "file": "S23Cost",
+    "file": "S23aCost1",
     "master": "M2",
     "section": "aws",
     "title": "AWS 비용 — 쓴 만큼만 낸다",
-    "subtitle": "서버를 구매하는 것이 아니라 빌리는 것. 필요할 때 켜고, 필요 없으면 끄면 됩니다",
+    "subtitle": "서버를 구매하는 것이 아니라 빌리는 것 — 1/2",
     "cards": [
       {
         "icon": "meter",
@@ -1070,7 +1286,16 @@
         "label": "예약",
         "title": "약정으로 최대 72% 할인",
         "body": "1년 또는 3년 약정. 24시간 안정적으로 운영되는 서비스에 적합. 비용 예측 가능."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S23bCost2",
+    "master": "M2",
+    "section": "aws",
+    "title": "AWS 비용 — 쓴 만큼만 낸다",
+    "subtitle": "서버를 구매하는 것이 아니라 빌리는 것 — 2/2",
+    "cards": [
       {
         "icon": "target",
         "label": "스팟",
@@ -1079,18 +1304,18 @@
       },
       {
         "icon": "star",
-        "label": "프리 티어",
+        "label": "프리티어",
         "title": "지금 무료로 시작",
         "body": "신규 계정 12개월 무료. EC2 t2.micro 750시간, S3 5GB, RDS 750시간, Lambda 100만 호출/월 포함."
       }
     ]
   },
   {
-    "file": "S24Careers",
+    "file": "S24aCareers1",
     "master": "M2",
     "section": "careers",
     "title": "AWS 관련 직업과 자격증",
-    "subtitle": "클라우드는 IT 전 분야의 기본 소양이 되었습니다 — 어떤 분야로 가든 클라우드 역량은 경쟁력",
+    "subtitle": "클라우드는 IT 전 분야의 기본 소양이 되었습니다 — 1/2",
     "cards": [
       {
         "icon": "layers",
@@ -1103,7 +1328,16 @@
         "label": "직군",
         "title": "DevOps 엔지니어",
         "body": "개발과 운영을 자동화. CI/CD 파이프라인 구축, 인프라 코드화(IaC). AWS DevOps Professional 자격증."
-      },
+      }
+    ]
+  },
+  {
+    "file": "S24bCareers2",
+    "master": "M2",
+    "section": "careers",
+    "title": "AWS 관련 직업과 자격증",
+    "subtitle": "클라우드는 IT 전 분야의 기본 소양이 되었습니다 — 2/2",
+    "cards": [
       {
         "icon": "shield",
         "label": "직군",
