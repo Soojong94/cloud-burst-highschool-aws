@@ -1,43 +1,43 @@
 import { motion } from "framer-motion";
-import { Brain, Zap, Leaf, Shield, Sparkles } from "lucide-react";
+import { Cloud, Brain, MapPin, Atom, Sparkles } from "lucide-react";
 
 const Page20FutureDetail = () => {
   const futureAreas = [
     {
-      icon: Brain,
-      title: "AI-First 클라우드",
-      color: "text-purple-400",
-      bgColor: "from-purple-900/20 to-purple-800/20",
-      innovations: ["Bedrock 확장", "AutoML 대중화", "AI 개발도구", "지능형 최적화"],
-      impact: ["코딩 없는 AI", "자동 인사이트", "예측적 스케일링", "지능형 보안"],
-      description: "모든 서비스에 AI가 기본 탑재되는 시대"
-    },
-    {
-      icon: Zap,
-      title: "완전 자동화",
-      color: "text-yellow-400",
-      bgColor: "from-yellow-900/20 to-yellow-800/20",
-      innovations: ["Zero-Ops", "자율 복구", "예측적 확장", "자동 최적화"],
-      impact: ["운영 부담 제로", "99.99% 가용성", "비용 자동 최적화", "성능 자동 튜닝"],
-      description: "인프라 관리가 완전히 자동화된 환경"
-    },
-    {
-      icon: Leaf,
-      title: "지속가능한 클라우드",
-      color: "text-green-400",
-      bgColor: "from-green-900/20 to-green-800/20",
-      innovations: ["100% 재생에너지", "탄소 중립 DC", "그린 컴퓨팅", "효율성 극대화"],
-      impact: ["환경 친화적", "ESG 목표 달성", "지속가능 발전", "사회적 책임"],
-      description: "환경을 고려한 지속가능한 클라우드 서비스"
-    },
-    {
-      icon: Shield,
-      title: "양자 보안",
+      icon: Cloud,
+      title: "포그 vs 엣지 vs 클라우드",
       color: "text-cyan-400",
       bgColor: "from-cyan-900/20 to-cyan-800/20",
-      innovations: ["양자 암호화", "양자 컴퓨팅", "차세대 보안", "불가침 보안"],
-      impact: ["절대적 보안", "양자 내성", "미래 대비", "혁신적 암호화"],
-      description: "양자 컴퓨팅 시대의 차세대 보안"
+      innovations: ["클라우드: 중앙 집중 처리", "포그: 네트워크 중간 레이어", "엣지: 기기 현장 처리", "AWS Outposts·Local Zones"],
+      impact: ["지연 시간 1ms 이하", "인터넷 끊겨도 동작", "의료·제조 현장 적용", "5G와 시너지"],
+      description: "처리 위치를 최적화해 속도·비용·보안을 동시에 잡는 전략"
+    },
+    {
+      icon: Brain,
+      title: "AI 컴퓨팅 인프라 혁신",
+      color: "text-purple-400",
+      bgColor: "from-purple-900/20 to-purple-800/20",
+      innovations: ["AWS Trainium·Inferentia 칩", "Amazon Bedrock API", "SageMaker HyperPod", "RAG·Fine-tuning 패턴"],
+      impact: ["GPU 대비 40% 비용 절감", "기업 전용 LLM 구축", "RAG로 환각 최소화", "생산성 혁명"],
+      description: "생성형 AI 시대, 클라우드 인프라가 AI 경쟁력의 핵심"
+    },
+    {
+      icon: MapPin,
+      title: "광주·전남 데이터센터 클러스터",
+      color: "text-green-400",
+      bgColor: "from-green-900/20 to-green-800/20",
+      innovations: ["광주 AI 집적단지 조성", "전남 나주 탄소중립 DC", "호남권 클라우드 허브", "공공·의료 데이터 주권"],
+      impact: ["지역 IT 인재 수요 급증", "재생에너지 100% 구동", "수도권 집중 완화", "지역 스타트업 기회"],
+      description: "데이터 주권과 탄소중립 두 마리 토끼를 잡는 지역 DC 전략"
+    },
+    {
+      icon: Atom,
+      title: "양자 컴퓨팅 & 클라우드 보안",
+      color: "text-orange-400",
+      bgColor: "from-orange-900/20 to-orange-800/20",
+      innovations: ["Amazon Braket 플랫폼", "양자 내성 암호화(PQC)", "하이브리드 양자-클래식", "2030년대 상용화"],
+      impact: ["신약 개발 시뮬레이션", "물류 최적화 혁신", "현재 암호화 위협 대비", "금융·국방 분야 적용"],
+      description: "양자 컴퓨팅 상용화 전 지금부터 준비해야 하는 이유"
     }
   ];
 
@@ -48,7 +48,6 @@ const Page20FutureDetail = () => {
       transition={{ duration: 0.8 }}
       className="min-h-screen py-8 md:py-12 lg:py-0 flex items-center justify-center bg-gradient-to-br from-background via-slate-900 to-purple-900/30 bg-mesh-gradient relative overflow-hidden"
     >
-      {/* 배경 요소들 */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-cyan-500/5" />
       <div className="absolute top-20 right-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl float-animation" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
@@ -62,11 +61,14 @@ const Page20FutureDetail = () => {
         >
           <div className="relative mb-6">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-purple title-main">
-              클라우드의 미래
+              미래 기술 심층 분석
             </h2>
             <Sparkles className="w-8 h-8 absolute top-0 right-1/4 text-purple-400 animate-pulse" />
             <Sparkles className="w-6 h-6 absolute bottom-0 left-1/4 text-cyan-400 animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto bg-black/20 backdrop-blur-sm p-4 rounded-2xl border border-purple-500/20">
+            포그·엣지 AI·광주 DC·양자 컴퓨팅 — 지금 준비해야 할 4가지 흐름
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -80,15 +82,13 @@ const Page20FutureDetail = () => {
             >
               <div className="text-center mb-4">
                 <area.icon className={`w-12 h-12 ${area.color} mx-auto mb-3`} />
-                <h3 className={`text-lg font-bold ${area.color} mb-2`}>{area.title}</h3>
-                <p className="text-muted-foreground text-xs leading-relaxed">
-                  {area.description}
-                </p>
+                <h3 className={`text-sm font-bold ${area.color} mb-2`}>{area.title}</h3>
+                <p className="text-muted-foreground text-xs leading-relaxed">{area.description}</p>
               </div>
 
               <div className="space-y-3">
                 <div>
-                  <h4 className="text-white font-semibold text-xs mb-2">핵심 혁신</h4>
+                  <h4 className="text-white font-semibold text-xs mb-2">핵심 기술</h4>
                   <div className="space-y-1">
                     {area.innovations.map((innovation, i) => (
                       <div key={i} className="bg-slate-800/50 p-1 rounded text-center">
@@ -113,7 +113,6 @@ const Page20FutureDetail = () => {
           ))}
         </div>
 
-        {/* 하단 미래 전망 */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -121,19 +120,23 @@ const Page20FutureDetail = () => {
           className="mt-8 bg-gradient-to-r from-slate-800/30 to-slate-900/30 p-6 rounded-2xl border border-white/10"
         >
           <h3 className="text-2xl font-bold mb-4 text-center text-gradient-cyan">2030년 클라우드 전망</h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-purple-900/20 p-4 rounded-xl">
-              <h4 className="text-purple-400 font-semibold mb-2">기술적 혁신</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                양자 컴퓨팅, 뉴로모픽 칩, 6G 네트워크가 클라우드와 융합되어
-                현재로는 상상할 수 없는 새로운 가능성을 열어갈 것입니다.
+              <h4 className="text-purple-400 font-semibold mb-2 text-sm">시장 규모</h4>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                글로벌 퍼블릭 클라우드 지출 2030년 <span className="text-white font-bold">$1.8조</span> 전망 (Gartner). 한국 클라우드 전환율 60% 돌파 예상.
+              </p>
+            </div>
+            <div className="bg-green-900/20 p-4 rounded-xl">
+              <h4 className="text-green-400 font-semibold mb-2 text-sm">국내 인프라</h4>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                광주·전남·부산 데이터센터 클러스터 완성. 수도권 집중에서 <span className="text-white font-bold">분산형 국토 클라우드</span>로 전환.
               </p>
             </div>
             <div className="bg-cyan-900/20 p-4 rounded-xl">
-              <h4 className="text-cyan-400 font-semibold mb-2">사회적 영향</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                클라우드는 교육, 의료, 환경 문제 해결의 핵심 플랫폼이 되어
-                더 나은 세상을 만드는 데 기여할 것입니다.
+              <h4 className="text-cyan-400 font-semibold mb-2 text-sm">직업 & 기회</h4>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                클라우드·AI 엔지니어 수요 <span className="text-white font-bold">연 30% 성장</span>. 지금 배우는 AWS가 5년 후 커리어를 결정합니다.
               </p>
             </div>
           </div>

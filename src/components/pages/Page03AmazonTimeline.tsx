@@ -32,6 +32,11 @@ const Page03AmazonTimeline = () => {
       year: "2018",
       title: "AI/ML 확장",
       description: "SageMaker, Alexa 등 AI 서비스 본격 출시"
+    },
+    {
+      year: "2023~현재",
+      title: "생성형 AI 시대",
+      description: "Amazon Bedrock 출시, Claude·Titan 등 파운데이션 모델 API 제공. 한국 서울 리전 포함 전 세계 34개 리전 운영"
     }
   ];
 

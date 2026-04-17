@@ -7,7 +7,7 @@ const Page01Introduction = () => {
       icon: User,
       title: "강사 소개",
       content: "김수종",
-      subtitle: "으뜸정보기술 Solutions Architect",
+      subtitle: "으뜸정보기술 책임",
       color: "text-blue-400"
     },
     {
